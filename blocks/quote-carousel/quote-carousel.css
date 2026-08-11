@@ -1,0 +1,191 @@
+/* Ported from styles/blocks/mandai/md-quote-carousel.less */
+
+.quote-carousel {
+  padding: 60px 0;
+}
+
+@media only screen and (width <= 992px) {
+  .quote-carousel {
+    padding: 40px 0;
+  }
+}
+
+.quote-carousel .grid {
+  width: 75rem;
+}
+
+@media only screen and (1200px <= width <= 1439px) {
+  .quote-carousel .grid {
+    width: 85.938rem;
+  }
+}
+
+@media only screen and (992px <= width <= 1199px) {
+  .quote-carousel .grid {
+    position: relative;
+    width: 100%;
+  }
+}
+
+@media only screen and (width <= 992px) {
+  .quote-carousel .grid {
+    width: 100%;
+  }
+}
+
+.quote-carousel .md-quote-carousel__message {
+  width: 720px;
+  margin: auto;
+  text-align: center;
+}
+
+@media only screen and (width <= 992px) {
+  .quote-carousel .md-quote-carousel__message {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.quote-carousel .md-quote-carousel__message .message {
+  margin-bottom: 20px;
+}
+
+.quote-carousel .md-quote-carousel__message .body-text2 {
+  margin-bottom: 20px;
+}
+
+@media only screen and (width <= 1200px) {
+  .quote-carousel .md-quote-carousel__message .message {
+    padding: 0 12%;
+  }
+
+  .quote-carousel .md-quote-carousel__message .body-text2 {
+    margin-bottom: 0;
+    padding: 0 12%;
+  }
+}
+
+/* --- carousel chrome ------------------------------------------------------- */
+
+.quote-carousel .slick-slider {
+  position: relative;
+  display: block;
+  width: 100%;
+  visibility: visible;
+  user-select: text;
+}
+
+.quote-carousel .slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.quote-carousel .slick-track {
+  position: relative;
+  display: flex;
+  transition-property: transform;
+  transition-timing-function: ease;
+}
+
+.quote-carousel .slick-slide {
+  float: none;
+  flex: 0 0 auto;
+}
+
+/*
+ * md-general.less hides the dots on every md-carousel unless the carousel also
+ * carries `active`, so production shows arrows only. Kept as-is so the rendered
+ * result matches, and so enabling dots stays a one-class change.
+ */
+.quote-carousel .slick-dotted .slick-dots {
+  display: none;
+}
+
+.quote-carousel .slick-dotted.active .slick-dots {
+  display: flex;
+}
+
+.quote-carousel .slick-dots {
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quote-carousel .slick-dots li {
+  width: 0.625rem;
+  height: 0.625rem;
+  margin: 0 0.188rem;
+  border-radius: 50%;
+  background-color: #e2d5be;
+}
+
+.quote-carousel .slick-dots li.slick-active {
+  background-color: var(--casque-yellow);
+}
+
+.quote-carousel .slick-dots button {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+
+.quote-carousel .slick-slider .slick-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 23px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.quote-carousel .slick-slider .slick-arrow.slick-prev {
+  left: -58px;
+  background-image: url('../../icons/mandai-arrow-yellow-left.svg');
+}
+
+.quote-carousel .slick-slider .slick-arrow.slick-next {
+  right: -58px;
+  background-image: url('../../icons/mandai-arrow-yellow-right.svg');
+}
+
+.quote-carousel .slick-slider .slick-arrow.slick-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media only screen and (width <= 992px) {
+  .quote-carousel .slick-slider .slick-arrow {
+    width: 18px;
+    height: 32px;
+  }
+}
+
+@media only screen and (width <= 1200px) {
+  .quote-carousel .slick-slider .slick-arrow.slick-prev {
+    top: 45%;
+    left: 10px;
+  }
+
+  .quote-carousel .slick-slider .slick-arrow.slick-next {
+    top: 45%;
+    right: 10px;
+  }
+}

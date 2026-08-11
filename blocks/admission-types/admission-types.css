@@ -1,0 +1,104 @@
+/* Ported from styles/blocks/mandai/md-admission-type.less */
+
+.admission-types .md-admission-type__wrapper {
+  padding: 5rem 2.5rem;
+}
+
+@media only screen and (width <= 992px) {
+  .admission-types .md-admission-type__wrapper {
+    padding: 2.5rem 0;
+  }
+}
+
+.admission-types .md-admission-type__list {
+  display: flex;
+  gap: 6.063rem;
+}
+
+@media only screen and (width <= 1440px) {
+  .admission-types .md-admission-type__list {
+    gap: 2.813rem;
+  }
+}
+
+@media only screen and (width <= 992px) {
+  .admission-types .md-admission-type__list {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+
+.admission-types .md-admission-type__item {
+  flex: 1;
+}
+
+.admission-types .md-admission-type__title {
+  margin-bottom: 0.75rem;
+}
+
+.admission-types .md-admission-type__title p,
+.admission-types .md-admission-type__title strong {
+  margin: 0;
+  font-family: var(--primary-font-regular);
+  font-size: 1.625rem;
+  line-height: normal;
+  color: var(--equatorial-green);
+}
+
+.admission-types .md-admission-type__title strong {
+  display: flex;
+  align-items: center;
+}
+
+.admission-types .md-admission-type__title .icon {
+  display: inline-grid;
+  place-items: center center;
+  min-width: 1.875rem;
+  min-height: 1.875rem;
+  width: 1.875rem;
+  height: 1.875rem;
+  margin-left: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--equatorial-green);
+  color: var(--sap-white);
+  text-align: center;
+}
+
+.admission-types .md-admission-type__title .icon svg {
+  width: 0.5rem;
+  height: 1rem;
+}
+
+.admission-types .md-admission-type__desc,
+.admission-types .md-admission-type__desc p {
+  margin-bottom: 1rem;
+  font-family: var(--secondary-font-regular);
+  font-size: 1.25rem;
+  line-height: normal;
+  color: var(--binturong-black);
+}
+
+@media only screen and (width <= 992px) {
+  .admission-types .md-admission-type__title {
+    margin-bottom: 0;
+  }
+
+  .admission-types .md-admission-type__title p,
+  .admission-types .md-admission-type__title strong {
+    font-size: 1.125rem;
+  }
+
+  .admission-types .md-admission-type__title strong {
+    justify-content: space-between;
+  }
+
+  .admission-types .md-admission-type__desc {
+    display: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .admission-types .md-admission-type__title a:hover .icon {
+    background-color: var(--md-arrow-hover);
+  }
+}

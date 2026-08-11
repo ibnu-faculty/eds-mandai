@@ -1,0 +1,14 @@
+/* Ported from styles/common.less (.richtext / .rich-text) */
+
+.rich-text {
+  padding: 1.25rem 0;
+  line-height: 1.5rem;
+}
+
+.rich-text .one-column-only-text {
+  margin-bottom: 0.938rem;
+}
+
+.rich-text .grid-small .one-column-only-text {
+  padding: 5px 20px;
+}

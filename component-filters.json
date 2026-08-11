@@ -12,11 +12,34 @@
       "image",
       "button",
       "title",
-      "hero",
-      "cards",
-      "columns",
       "fragment",
-      "feature-carousel"
+      "rich-text",
+      "section-title",
+      "masthead-carousel",
+      "feature-carousel",
+      "experience-carousel",
+      "admission-types",
+      "zone-listing",
+      "four-col-listing",
+      "accordion-tabs",
+      "quote-carousel",
+      "social-grid",
+      "conservation-banner",
+      "columns",
+      "cards",
+      "hero"
+    ]
+  },
+  {
+    "id": "accordion-tabs",
+    "components": [
+      "accordion-tabs-tab"
+    ]
+  },
+  {
+    "id": "admission-types",
+    "components": [
+      "admission-types-item"
     ]
   },
   {
@@ -41,9 +64,57 @@
     ]
   },
   {
+    "id": "experience-carousel",
+    "components": [
+      "experience-carousel-slide"
+    ]
+  },
+  {
     "id": "feature-carousel",
     "components": [
       "feature-carousel-slide"
+    ]
+  },
+  {
+    "id": "footer-nav",
+    "components": [
+      "footer-nav-row"
+    ]
+  },
+  {
+    "id": "four-col-listing",
+    "components": [
+      "four-col-listing-card"
+    ]
+  },
+  {
+    "id": "masthead-carousel",
+    "components": [
+      "masthead-carousel-slide"
+    ]
+  },
+  {
+    "id": "nav-menu",
+    "components": [
+      "nav-menu-row"
+    ]
+  },
+  {
+    "id": "quote-carousel",
+    "components": [
+      "quote-carousel-item"
+    ]
+  },
+  {
+    "id": "social-grid",
+    "components": [
+      "social-grid-item"
+    ]
+  },
+  {
+    "id": "zone-listing",
+    "components": [
+      "zone-listing-item"
     ]
   }
 ]

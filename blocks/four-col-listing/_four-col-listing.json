@@ -1,0 +1,204 @@
+{
+  "definitions": [
+    {
+      "title": "Four Column Listing",
+      "id": "four-col-listing",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Four Column Listing",
+              "model": "four-col-listing",
+              "filter": "four-col-listing"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Listing Card",
+      "id": "four-col-listing-card",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Listing Card",
+              "model": "four-col-listing-card"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "four-col-listing",
+      "fields": [
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "bgColor",
+          "label": "Background",
+          "value": "bg-base",
+          "options": [
+            {
+              "name": "Base",
+              "value": "bg-base"
+            },
+            {
+              "name": "Sap White",
+              "value": "bg-sap-white"
+            },
+            {
+              "name": "Equatorial Green",
+              "value": "bg-dark-green"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Heading"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "align",
+          "label": "Heading Alignment",
+          "value": "title-center",
+          "options": [
+            {
+              "name": "Left",
+              "value": "title-left"
+            },
+            {
+              "name": "Centre",
+              "value": "title-center"
+            },
+            {
+              "name": "Right",
+              "value": "title-right"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "anchorLink",
+          "label": "Anchor Link ID"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "ctaStyle",
+          "label": "Card CTA Style",
+          "value": "link",
+          "options": [
+            {
+              "name": "Link with arrow",
+              "value": "link"
+            },
+            {
+              "name": "Button",
+              "value": "button"
+            }
+          ]
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "alignItems",
+          "label": "Centre The Cards"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "cta",
+          "label": "Footer CTA Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaText",
+          "label": "Footer CTA Label"
+        }
+      ]
+    },
+    {
+      "id": "four-col-listing-card",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "locationLabels",
+          "label": "Location Labels",
+          "description": "One per line."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "dateLabels",
+          "label": "Date Labels",
+          "description": "One per line."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "timeLabels",
+          "label": "Time Labels",
+          "description": "One per line."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "tags",
+          "label": "Tags",
+          "description": "One per line."
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "shortDescription",
+          "value": "",
+          "label": "Description"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "cta",
+          "label": "CTA Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaText",
+          "label": "CTA Label"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "four-col-listing",
+      "components": [
+        "four-col-listing-card"
+      ]
+    }
+  ]
+}

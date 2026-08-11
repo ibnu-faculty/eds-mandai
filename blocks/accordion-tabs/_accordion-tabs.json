@@ -1,0 +1,123 @@
+{
+  "definitions": [
+    {
+      "title": "Accordion Tabs",
+      "id": "accordion-tabs",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Accordion Tabs",
+              "model": "accordion-tabs",
+              "filter": "accordion-tabs"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Tab",
+      "id": "accordion-tabs-tab",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Tab",
+              "model": "accordion-tabs-tab"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "accordion-tabs",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "anchorLink",
+          "label": "Anchor Link ID"
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "noTopPadding",
+          "label": "No Top Padding"
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "noBottomPadding",
+          "label": "No Bottom Padding"
+        }
+      ]
+    },
+    {
+      "id": "accordion-tabs-tab",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "tabName",
+          "label": "Tab Name"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "description",
+          "value": "",
+          "label": "Description"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "cta",
+          "label": "CTA Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaText",
+          "label": "CTA Label"
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "newTab",
+          "label": "Open In New Tab"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "accordion-tabs",
+      "components": [
+        "accordion-tabs-tab"
+      ]
+    }
+  ]
+}

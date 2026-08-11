@@ -1,33 +1,68 @@
-.columns > div {
-  display: flex;
-  flex-direction: column;
-}
+/* Ported from styles/blocks/column-control-component.less + core image styling */
 
-.columns img {
+.columns .container {
   width: 100%;
 }
 
-.columns > div > div {
-  order: 1;
+.columns [class*="col-"] {
+  height: auto;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
 }
 
-.columns > div > .columns-img-col {
-  order: 0;
+.columns a,
+.columns div,
+.columns label,
+.columns p,
+.columns span {
+  font-size: 16px;
 }
 
-.columns > div > .columns-img-col img {
+.columns a {
+  color: var(--equatorial-green);
+  text-decoration: underline;
+}
+
+.columns h3,
+.columns p {
+  font-family: var(--primary-font-regular);
+}
+
+.columns h3 {
+  background-image: none;
+  color: var(--equatorial-green);
+}
+
+.columns h3::after {
+  display: none;
+}
+
+.columns .rich-text .grid,
+.columns .rich-text .grid-small {
+  width: 100%;
+  padding: 0;
+}
+
+/* core image component output */
+.columns .cmp-image {
+  margin: 43px 0;
+}
+
+.columns .cmp-image img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.columns .cmp-image__title {
   display: block;
 }
 
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
-
-  .columns > div > div {
-    flex: 1;
-    order: unset;
+@media only screen and (width <= 992px) {
+  .columns .cmp-image {
+    margin: 40px 0;
   }
 }

@@ -29,12 +29,27 @@
           "component": "multiselect",
           "name": "style",
           "label": "Style",
+          "description": "Background colour for the whole section, matching the AEM background section component.",
           "options": [
             {
-              "name": "Highlight",
-              "value": "highlight"
+              "name": "Base",
+              "value": "bg-base"
+            },
+            {
+              "name": "Sap White",
+              "value": "bg-sap-white"
+            },
+            {
+              "name": "Equatorial Green",
+              "value": "bg-dark-green"
             }
           ]
+        },
+        {
+          "component": "text",
+          "name": "aria-label",
+          "label": "Accessible Name",
+          "description": "Announced as the name of this section. Leave blank for decorative sections."
         }
       ]
     }
@@ -47,11 +62,22 @@
         "image",
         "button",
         "title",
-        "hero",
-        "cards",
-        "columns",
         "fragment",
-        "feature-carousel"
+        "rich-text",
+        "section-title",
+        "masthead-carousel",
+        "feature-carousel",
+        "experience-carousel",
+        "admission-types",
+        "zone-listing",
+        "four-col-listing",
+        "accordion-tabs",
+        "quote-carousel",
+        "social-grid",
+        "conservation-banner",
+        "columns",
+        "cards",
+        "hero"
       ]
     }
   ]

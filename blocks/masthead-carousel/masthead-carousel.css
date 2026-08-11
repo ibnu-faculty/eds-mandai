@@ -1,0 +1,518 @@
+/*
+ * Ported from styles/blocks/banner.less and
+ * styles/blocks/mandai/md-masthead-component.less
+ */
+
+.masthead-carousel {
+  position: relative;
+  width: 100%;
+  padding-bottom: 58.5px;
+  overflow: hidden;
+}
+
+.masthead-carousel .banner__content {
+  position: relative;
+}
+
+/* --- slides --------------------------------------------------------------- */
+
+.masthead-carousel .slick-list {
+  position: relative;
+  display: block;
+}
+
+.masthead-carousel .slick-track {
+  display: grid;
+  line-height: 0;
+}
+
+.masthead-carousel .slick-slide {
+  position: relative;
+  grid-area: 1 / 1;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity var(--fade-duration, 500ms) linear;
+}
+
+.masthead-carousel .slick-slide.slick-active {
+  z-index: 2;
+  opacity: 1;
+}
+
+/* before the carousel takes over, only the first slide is shown */
+.masthead-carousel .banner__carousel-wrapper > .banner__content-item:not(:first-child) {
+  display: none;
+}
+
+.masthead-carousel .cover-picture {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: var(--slide-min-height, 100%);
+  max-height: calc(100vh - var(--heightReduce, 0px));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.masthead-carousel .height-100 .cover-picture {
+  height: calc(100vh - var(--heightReduce, 0px));
+}
+
+.masthead-carousel .height-75 .cover-picture {
+  height: calc(75vh - var(--heightReduce, 0px));
+}
+
+.masthead-carousel .banner__content-item .cover-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media only screen and (width >= 1200px) {
+  .masthead-carousel .banner__content-item .cover-picture {
+    min-height: 500px;
+  }
+}
+
+@media only screen and (width <= 1024px) {
+  .masthead-carousel .banner__content-item .cover-picture {
+    background-position: top;
+  }
+}
+
+/* --- video / vimeo / youtube --------------------------------------------- */
+
+.masthead-carousel .video-wrapper,
+.masthead-carousel .vimeo-wrapper,
+.masthead-carousel .youtube-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.masthead-carousel .video-wrapper video,
+.masthead-carousel .vimeo-wrapper iframe,
+.masthead-carousel .youtube-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.masthead-carousel .vimeo-video.vimeo-mobile {
+  display: none;
+}
+
+.masthead-carousel .mobile-fallback-img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media only screen and (width <= 1024px) {
+  .masthead-carousel .vimeo-video.vimeo-desktop {
+    display: none;
+  }
+
+  .masthead-carousel .vimeo-video.vimeo-mobile {
+    display: block;
+  }
+
+  .masthead-carousel .banner__content-item.no-mobile-src .vimeo-wrapper,
+  .masthead-carousel .banner__content-item.no-mobile-src .video-wrapper {
+    display: none;
+  }
+
+  .masthead-carousel .banner__content-item.no-mobile-src .mobile-fallback-img {
+    display: block;
+  }
+}
+
+.masthead-carousel .md-masthead__controller {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 4;
+  pointer-events: all;
+}
+
+.masthead-carousel .md-masthead__controller-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.masthead-carousel .md-masthead__controller button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 50%);
+  color: var(--tapir-white);
+  cursor: pointer;
+}
+
+.masthead-carousel .md-masthead__controller .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.masthead-carousel .md-masthead__controller .icon.hidden {
+  display: none;
+}
+
+/* --- slide text ---------------------------------------------------------- */
+
+/* `style2` centres the text block with align-self rather than a fixed offset */
+.masthead-carousel .banner__content__text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  align-self: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 0.625rem;
+  text-align: center;
+  text-shadow: none;
+  transform: translateX(-50%);
+}
+
+.masthead-carousel .banner__content__text h1 {
+  margin-bottom: 0.938rem;
+  font-size: 4.375rem;
+  line-height: 4.625rem;
+  color: var(--casque-yellow);
+}
+
+.masthead-carousel .banner__content__text h2 {
+  margin-bottom: 15px;
+  font-size: 3.125rem;
+  line-height: 1.2;
+  color: var(--casque-yellow);
+}
+
+.masthead-carousel .banner__content__text span {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1.25rem;
+  font-family: var(--primary-font-bold);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.625rem;
+  color: var(--sap-white);
+}
+
+.masthead-carousel .banner__content__text p {
+  color: var(--sap-white);
+}
+
+.masthead-carousel .banner__content__text a {
+  position: relative;
+  z-index: 3;
+  text-shadow: none;
+  pointer-events: all;
+}
+
+.masthead-carousel .banner__content__text a.md-button-big {
+  padding: 1.063rem 1.5rem;
+}
+
+.masthead-carousel .banner__content__text.align-end {
+  top: initial;
+  bottom: 15%;
+  align-self: end;
+}
+
+.masthead-carousel .banner__content__text.text-center {
+  padding: 0 15rem;
+  text-align: center;
+}
+
+.masthead-carousel .banner__content__text.text-left {
+  padding-right: 30rem;
+  text-align: left;
+}
+
+.masthead-carousel .banner__content__text.text-gradient::after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse 20% 300px, #000 -50%, transparent 100%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.masthead-carousel .banner__content__text.text-left.text-gradient::after {
+  left: 20%;
+}
+
+/* --- countdown ----------------------------------------------------------- */
+
+.masthead-carousel .countdown-wrapper ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.masthead-carousel .countdown-wrapper li {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--primary-font-bold);
+  font-size: 1rem;
+  color: var(--sap-white);
+}
+
+.masthead-carousel .countdown-wrapper li span {
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--casque-yellow);
+}
+
+.masthead-carousel .countdown-description {
+  display: inline-block;
+  width: 100%;
+  color: var(--sap-white);
+}
+
+/* --- arrows -------------------------------------------------------------- */
+
+/* above the active slide, which is lifted to z-index 2 by the cross-fade */
+.masthead-carousel .banner__carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  width: 100%;
+}
+
+.masthead-carousel .banner__carousel-arrow .slick-slider {
+  position: static;
+}
+
+.masthead-carousel .btn.btn-pre-zoo,
+.masthead-carousel .btn.btn-next-zoo {
+  position: absolute;
+  display: none;
+  width: 23px;
+  height: 40px;
+  min-width: initial;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: none;
+  color: transparent;
+  font-size: 0;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.masthead-carousel .banner__carousel-wrapper.slick-initialized ~ .banner__carousel-arrow .btn.btn-pre-zoo,
+.masthead-carousel .banner__carousel-wrapper.slick-initialized ~ .banner__carousel-arrow .btn.btn-next-zoo {
+  display: block;
+}
+
+.masthead-carousel .btn.btn-pre-zoo {
+  left: -65px;
+  background-image: url('../../icons/mandai-arrow-yellow-left.svg');
+  background-position: left;
+}
+
+.masthead-carousel .btn.btn-next-zoo {
+  right: -65px;
+  background-image: url('../../icons/mandai-arrow-yellow-right.svg');
+  background-position: right;
+}
+
+.masthead-carousel .btn.btn-pre-zoo:focus,
+.masthead-carousel .btn.btn-next-zoo:focus {
+  outline: 2px solid var(--casque-yellow);
+}
+
+@media only screen and (width >= 992px) {
+  .masthead-carousel .banner__carousel-arrow .grid {
+    position: relative;
+    width: 75rem;
+  }
+}
+
+@media only screen and (1200px <= width <= 1439px) {
+  .masthead-carousel .banner__carousel-arrow .grid {
+    position: relative;
+    width: 85.938rem;
+  }
+}
+
+@media only screen and (992px <= width <= 1199px) {
+  .masthead-carousel .banner__carousel-arrow .grid {
+    position: relative;
+    width: 100%;
+  }
+}
+
+@media only screen and (width <= 1439px) {
+  .masthead-carousel .btn.btn-pre-zoo { left: 15px; }
+  .masthead-carousel .btn.btn-next-zoo { right: 15px; }
+}
+
+/* --- dots ---------------------------------------------------------------- */
+
+.masthead-carousel .slick-dots {
+  position: absolute;
+  bottom: 52px;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.masthead-carousel .slick-dots li {
+  width: 15px;
+  height: 15px;
+  margin: 0 8.5px;
+  border-radius: 50%;
+  background-color: var(--sap-white);
+  opacity: 1;
+}
+
+.masthead-carousel .slick-dots li.slick-active {
+  background-color: var(--casque-yellow);
+}
+
+.masthead-carousel .slick-dots li button {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+
+/* --- breakpoints --------------------------------------------------------- */
+
+@media only screen and (1200px <= width <= 1439px) {
+  .masthead-carousel .banner__content__text { width: 1100px; }
+}
+
+@media only screen and (1025px <= width <= 1199px) {
+  .masthead-carousel .banner__content__text { width: 960px; }
+}
+
+@media only screen and (width <= 1440px) {
+  .masthead-carousel .banner__content__text h1 {
+    font-size: 3.75rem;
+    line-height: 4.375rem;
+  }
+
+  .masthead-carousel .banner__content__text h2 { font-size: 2rem; }
+  .masthead-carousel .banner__content__text.text-center { padding: 0 12.5rem; }
+  .masthead-carousel .banner__content__text.text-left { padding-right: 25rem; }
+  .masthead-carousel .slick-dots { bottom: 10.5%; }
+}
+
+@media only screen and (width <= 1200px) {
+  .masthead-carousel .banner__content__text.text-center { padding: 0 10rem; }
+  .masthead-carousel .banner__content__text.text-left { padding-right: 20rem; }
+}
+
+@media only screen and (width <= 1024px) {
+  .masthead-carousel .banner__content__text {
+    top: initial;
+    bottom: 80px;
+    width: 100%;
+  }
+
+  .masthead-carousel .banner__content__text.text-left { padding: 0 40% 0 4.25rem; }
+  .masthead-carousel .banner__content__text.text-center { padding: 0 20%; }
+  .masthead-carousel .banner__content__text a { padding: 0; }
+
+  .masthead-carousel .banner__content__text span {
+    margin-bottom: 20px;
+    overflow: initial;
+  }
+}
+
+@media only screen and (width <= 992px) {
+  .masthead-carousel .banner__content__text h1 {
+    margin-bottom: 0.938rem;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .masthead-carousel .banner__content__text h2 { margin-bottom: 0.938rem; }
+
+  .masthead-carousel .banner__content__text.text-gradient::after {
+    top: 50%;
+    left: 50%;
+    background: radial-gradient(ellipse 40% 200px, #000 -70%, transparent 100%);
+  }
+
+  .masthead-carousel .banner__content__text.text-left.text-gradient::after { left: 40%; }
+
+  .masthead-carousel .banner__carousel-arrow { display: block; }
+  .masthead-carousel .banner__carousel-arrow .grid { width: 100%; }
+
+  .masthead-carousel .btn.btn-pre-zoo,
+  .masthead-carousel .btn.btn-next-zoo {
+    width: 18px;
+    height: 32px;
+  }
+
+  .masthead-carousel .slick-dots { bottom: 35px; }
+}
+
+@media only screen and (width <= 991px) {
+  .masthead-carousel .banner__content__text { width: 100%; }
+
+  .masthead-carousel .banner__content__text.text-center,
+  .masthead-carousel .banner__content__text.text-left {
+    padding: 0 3.25rem;
+    text-align: center;
+  }
+
+  .masthead-carousel .btn.btn-pre-zoo { left: 20px; }
+  .masthead-carousel .btn.btn-next-zoo { right: 20px; }
+}
+
+@media only screen and (width <= 768px) {
+  .masthead-carousel .slick-dots li {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+  }
+
+  .masthead-carousel .slick-dots li button {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media only screen and (width <= 480px) {
+  .masthead-carousel .banner__content__text span {
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+  }
+}

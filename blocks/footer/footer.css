@@ -1,20 +1,13 @@
-footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
-}
+/*
+ * The footer shell only hosts the /footer fragment; the conservation banner and
+ * footer-nav blocks inside it are full-bleed, so nothing here may constrain them.
+ */
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
-}
-
-footer .footer p {
+footer .footer,
+footer .footer > div,
+footer .footer .section,
+footer .footer .section > div {
+  max-width: none;
   margin: 0;
-}
-
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
-  }
+  padding: 0;
 }

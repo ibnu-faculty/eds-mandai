@@ -1,0 +1,293 @@
+/* Ported from styles/blocks/mandai/md-rfn-component.less (.md-accordion-tabs) */
+
+.accordion-tabs {
+  padding: 128px 0;
+}
+
+.accordion-tabs h1,
+.accordion-tabs h2,
+.accordion-tabs h3,
+.accordion-tabs h4,
+.accordion-tabs h5,
+.accordion-tabs h6 {
+  line-height: normal;
+}
+
+.accordion-tabs h1 { font-size: 4.375rem; }
+.accordion-tabs h2 { font-size: 3.125rem; }
+.accordion-tabs h3 { font-size: 2.5rem; }
+.accordion-tabs h4 { font-size: 1.625rem; }
+.accordion-tabs h5 { font-size: 1.25rem; }
+.accordion-tabs h6 { font-size: 1rem; }
+
+.accordion-tabs .section-title {
+  margin-bottom: 60px;
+}
+
+.accordion-tabs .tab_list {
+  position: relative;
+  display: block;
+  max-width: 980px;
+  margin: auto;
+  overflow: auto hidden;
+}
+
+.accordion-tabs .tab_list::-webkit-scrollbar {
+  height: 5px;
+}
+
+.accordion-tabs .tab_list::-webkit-scrollbar-track {
+  background-color: #ccc;
+}
+
+.accordion-tabs .tab_list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--equatorial-green);
+}
+
+.accordion-tabs .tab_item {
+  flex: 1 0 0;
+}
+
+.accordion-tabs .tab_btn-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #707070;
+  border-radius: 60px;
+  background: var(--tapir-white);
+  color: var(--equatorial-green);
+  font-family: var(--primary-font-bold);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.accordion-tabs .tab_btn-tab:focus-visible {
+  outline: 2px solid var(--md-arrow-hover);
+}
+
+/* the chevron only exists in the mobile accordion layout */
+.accordion-tabs .tab_btn-icon {
+  display: none;
+}
+
+.accordion-tabs .tab_item.active .tab_btn-tab {
+  border: 1px solid transparent;
+  background-color: var(--rainforest-green);
+  color: var(--sap-white);
+}
+
+.accordion-tabs .tab_info-container {
+  top: var(--buttonHeight, 50px);
+  left: 0;
+  width: 100%;
+}
+
+.accordion-tabs .tab_info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding: 24px 0;
+}
+
+.accordion-tabs .tab_info-content {
+  width: 50%;
+  max-width: 380px;
+  color: var(--equatorial-green);
+  text-align: left;
+}
+
+.accordion-tabs .tab_info-content_description,
+.accordion-tabs .tab_info-content_link {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: normal;
+}
+
+.accordion-tabs .tab_info-content_description {
+  font-family: var(--secondary-font-regular);
+}
+
+.accordion-tabs .tab_info-content_description p {
+  margin-bottom: 1rem;
+  font-family: var(--secondary-font-regular);
+  font-size: 1rem;
+  line-height: normal;
+}
+
+.accordion-tabs .tab_info-content_description a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.accordion-tabs .tab_info-content_description ul {
+  list-style: disc;
+}
+
+.accordion-tabs .tab_info-content_description ol {
+  list-style: decimal;
+}
+
+.accordion-tabs .tab_info-content_description ol,
+.accordion-tabs .tab_info-content_description ul {
+  margin-top: 1rem;
+  padding-left: 1.25rem;
+}
+
+.accordion-tabs .tab_info-content_link {
+  display: flex;
+  align-items: center;
+  font-family: var(--primary-font-bold);
+}
+
+.accordion-tabs .tab_info-image {
+  width: 50%;
+  max-width: 480px;
+  border: 1px solid #707070;
+  border-radius: 20px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.accordion-tabs .md-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background-color: var(--equatorial-green);
+  color: var(--sap-white);
+  font-size: 18px;
+}
+
+.accordion-tabs .md-link-arrow .icon {
+  width: 0.5em;
+  height: 1em;
+}
+
+/* --- initialised layout (matches `.tabs-initialized` in the LESS) --------- */
+
+.accordion-tabs.tabs-initialized .tab_list {
+  display: flex;
+  gap: 1rem;
+}
+
+.accordion-tabs.tabs-initialized .tab_item {
+  display: block;
+}
+
+.accordion-tabs.tabs-initialized .tab_info-container {
+  position: absolute;
+  display: none;
+}
+
+.accordion-tabs.tabs-initialized .tab_item.active .tab_info-container {
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .accordion-tabs .tab_info-content_description a:hover {
+    color: var(--md-arrow-hover);
+  }
+
+  .accordion-tabs .tab_info-content_link:hover {
+    color: var(--rainforest-green);
+  }
+
+  .accordion-tabs .tab_info-content_link:hover .md-link-arrow {
+    background-color: var(--md-arrow-hover);
+  }
+}
+
+.accordion-tabs .tab_info-content_description a:focus-visible {
+  color: var(--md-arrow-hover);
+}
+
+.accordion-tabs .tab_info-content_link:focus-visible .md-link-arrow {
+  background-color: var(--md-arrow-hover);
+}
+
+@media only screen and (width <= 991px) {
+  .accordion-tabs {
+    padding: 40px 0;
+  }
+
+  .accordion-tabs h1 { font-size: 2.25rem; }
+  .accordion-tabs h2 { font-size: 2rem; }
+  .accordion-tabs h3 { font-size: 1.625rem; }
+  .accordion-tabs h4 { font-size: 1.25rem; }
+
+  .accordion-tabs .section-title {
+    margin-bottom: 28px;
+  }
+
+  .accordion-tabs .tab_list,
+  .accordion-tabs.tabs-initialized .tab_list {
+    display: block;
+    height: auto;
+    padding: 0 16px;
+  }
+
+  .accordion-tabs .tab_item {
+    margin-bottom: 20px;
+  }
+
+  .accordion-tabs .tab_btn-tab {
+    position: relative;
+    display: block;
+  }
+
+  .accordion-tabs .tab_btn-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    display: block;
+    width: 1em;
+    height: 1em;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-tabs .tab_item.active .tab_btn-icon {
+    transform: translateY(-50%) rotate(-180deg);
+  }
+
+  .accordion-tabs.tabs-initialized .tab_info-container {
+    position: static;
+  }
+
+  .accordion-tabs .tab_info {
+    flex-direction: column-reverse;
+    margin-top: 20px;
+    padding: 0;
+  }
+
+  .accordion-tabs .tab_info-content {
+    width: 100%;
+    max-width: initial;
+  }
+
+  .accordion-tabs .tab_info-content_description,
+  .accordion-tabs .tab_info-content_header,
+  .accordion-tabs .tab_info-content_link {
+    margin-top: 20px;
+  }
+
+  .accordion-tabs .tab_info-image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .accordion-tabs .md-link-arrow {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+}

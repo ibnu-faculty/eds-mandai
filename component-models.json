@@ -132,12 +132,138 @@
         "component": "multiselect",
         "name": "style",
         "label": "Style",
+        "description": "Background colour for the whole section, matching the AEM background section component.",
         "options": [
           {
-            "name": "Highlight",
-            "value": "highlight"
+            "name": "Base",
+            "value": "bg-base"
+          },
+          {
+            "name": "Sap White",
+            "value": "bg-sap-white"
+          },
+          {
+            "name": "Equatorial Green",
+            "value": "bg-dark-green"
           }
         ]
+      },
+      {
+        "component": "text",
+        "name": "aria-label",
+        "label": "Accessible Name",
+        "description": "Announced as the name of this section. Leave blank for decorative sections."
+      }
+    ]
+  },
+  {
+    "id": "accordion-tabs",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "anchorLink",
+        "label": "Anchor Link ID"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "noTopPadding",
+        "label": "No Top Padding"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "noBottomPadding",
+        "label": "No Bottom Padding"
+      }
+    ]
+  },
+  {
+    "id": "accordion-tabs-tab",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tabName",
+        "label": "Tab Name"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "value": "",
+        "label": "Description"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Label"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "newTab",
+        "label": "Open In New Tab"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      }
+    ]
+  },
+  {
+    "id": "admission-types",
+    "fields": []
+  },
+  {
+    "id": "admission-types-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "path",
+        "label": "Link"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "isOpenNewTab",
+        "label": "Open In New Tab"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description"
       }
     ]
   },
@@ -176,6 +302,171 @@
         "name": "rows",
         "value": "",
         "label": "Rows"
+      }
+    ]
+  },
+  {
+    "id": "conservation-banner",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "bannerImage_desktop",
+        "label": "Desktop Image",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "bannerImage_mobile",
+        "label": "Mobile Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "tagImage",
+        "label": "Tag Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "value": "",
+        "label": "Description"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Label"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "enableGradient",
+        "label": "Darken Behind Text"
+      }
+    ]
+  },
+  {
+    "id": "experience-carousel",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "cardPlacement",
+        "label": "Card Placement",
+        "value": "left",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Card Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "value": "",
+        "label": "Card Description"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta",
+        "label": "Card Link"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "openNewTab",
+        "label": "Open Card Link In New Tab"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "noTopPadding",
+        "label": "No Top Padding"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "noBottomPadding",
+        "label": "No Bottom Padding"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ariaLabel",
+        "label": "Aria Label"
+      }
+    ]
+  },
+  {
+    "id": "experience-carousel-slide",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "imageCta",
+        "label": "Link"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "openNewTab2",
+        "label": "Open In New Tab"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "value": "",
+        "label": "Sub Text"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "disableGradient",
+        "label": "Disable Gradient"
       }
     ]
   },
@@ -327,6 +618,219 @@
     ]
   },
   {
+    "id": "footer-nav",
+    "fields": []
+  },
+  {
+    "id": "footer-nav-row",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "type",
+        "label": "Row Type",
+        "value": "links-left",
+        "options": [
+          {
+            "name": "Awards",
+            "value": "awards"
+          },
+          {
+            "name": "Social",
+            "value": "social"
+          },
+          {
+            "name": "Links (left column)",
+            "value": "links-left"
+          },
+          {
+            "name": "Links (right column)",
+            "value": "links-right"
+          },
+          {
+            "name": "Legal",
+            "value": "legal"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "description": "For a legal row this holds the copyright text."
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content",
+        "value": "",
+        "label": "Content",
+        "description": "Awards: images. Social: a list of links, each optionally followed by its icon and QR images. Links/Legal: a list of links."
+      }
+    ]
+  },
+  {
+    "id": "four-col-listing",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "bgColor",
+        "label": "Background",
+        "value": "bg-base",
+        "options": [
+          {
+            "name": "Base",
+            "value": "bg-base"
+          },
+          {
+            "name": "Sap White",
+            "value": "bg-sap-white"
+          },
+          {
+            "name": "Equatorial Green",
+            "value": "bg-dark-green"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Heading"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "align",
+        "label": "Heading Alignment",
+        "value": "title-center",
+        "options": [
+          {
+            "name": "Left",
+            "value": "title-left"
+          },
+          {
+            "name": "Centre",
+            "value": "title-center"
+          },
+          {
+            "name": "Right",
+            "value": "title-right"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "anchorLink",
+        "label": "Anchor Link ID"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "ctaStyle",
+        "label": "Card CTA Style",
+        "value": "link",
+        "options": [
+          {
+            "name": "Link with arrow",
+            "value": "link"
+          },
+          {
+            "name": "Button",
+            "value": "button"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "alignItems",
+        "label": "Centre The Cards"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta",
+        "label": "Footer CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "Footer CTA Label"
+      }
+    ]
+  },
+  {
+    "id": "four-col-listing-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "locationLabels",
+        "label": "Location Labels",
+        "description": "One per line."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "dateLabels",
+        "label": "Date Labels",
+        "description": "One per line."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "timeLabels",
+        "label": "Time Labels",
+        "description": "One per line."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tags",
+        "label": "Tags",
+        "description": "One per line."
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "shortDescription",
+        "value": "",
+        "label": "Description"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Label"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
@@ -359,6 +863,544 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "masthead-carousel",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "viewportScaling",
+        "label": "Slide Height",
+        "value": "100",
+        "options": [
+          {
+            "name": "Full viewport",
+            "value": "100"
+          },
+          {
+            "name": "Three quarters",
+            "value": "75"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "autoplay",
+        "label": "Autoplay"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "autoplaySpeed",
+        "label": "Autoplay Speed (ms)",
+        "description": "Defaults to 5000."
+      }
+    ]
+  },
+  {
+    "id": "masthead-carousel-slide",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "mediaOption",
+        "label": "Media",
+        "value": "image",
+        "options": [
+          {
+            "name": "Image",
+            "value": "image"
+          },
+          {
+            "name": "Video (MP4)",
+            "value": "video"
+          },
+          {
+            "name": "Vimeo",
+            "value": "vimeo"
+          },
+          {
+            "name": "YouTube",
+            "value": "youtube"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image_desktop",
+        "label": "Desktop Image",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image_mobile",
+        "label": "Mobile Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "header",
+        "label": "Heading"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subHeader",
+        "label": "Sub Heading"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Label"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "textAlignment",
+        "label": "Text Alignment",
+        "value": "text-center",
+        "options": [
+          {
+            "name": "Centre",
+            "value": "text-center"
+          },
+          {
+            "name": "Left",
+            "value": "text-left"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "textGradient",
+        "label": "Darken Behind Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageGradient",
+        "label": "Image Gradient Class"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaBottomSpacing",
+        "label": "Text Block Offset From Bottom (%)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media",
+        "label": "Video URL / Vimeo ID (desktop)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mediaMobile",
+        "label": "Video URL / Vimeo ID (mobile)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "controls",
+        "label": "Video Controls",
+        "description": "Comma separated: \"mute\", \"play\". Leave blank for none."
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "autoloop",
+        "label": "Loop Video"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "countdownTimer",
+        "label": "Countdown End (ISO date/time)"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "redirectLink",
+        "label": "Countdown Redirect"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "timerDescription",
+        "label": "Countdown Description"
+      }
+    ]
+  },
+  {
+    "id": "nav-menu",
+    "fields": []
+  },
+  {
+    "id": "nav-menu-row",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "type",
+        "label": "Row Type",
+        "value": "primary",
+        "options": [
+          {
+            "name": "Logo",
+            "value": "logo"
+          },
+          {
+            "name": "Buy tickets button",
+            "value": "ticket"
+          },
+          {
+            "name": "Search",
+            "value": "search"
+          },
+          {
+            "name": "Sign in",
+            "value": "login"
+          },
+          {
+            "name": "Languages",
+            "value": "languages"
+          },
+          {
+            "name": "Utility category",
+            "value": "secondary"
+          },
+          {
+            "name": "Primary category",
+            "value": "primary"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "label",
+        "value": "",
+        "label": "Label / Image"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "menu",
+        "value": "",
+        "label": "Menu Content",
+        "description": "Headings start a column, lists add its links, an image starts a spotlight card."
+      }
+    ]
+  },
+  {
+    "id": "quote-carousel",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "backgroundColor",
+        "label": "Background",
+        "value": "bg-base",
+        "options": [
+          {
+            "name": "Base",
+            "value": "bg-base"
+          },
+          {
+            "name": "Sap White",
+            "value": "bg-sap-white"
+          },
+          {
+            "name": "Equatorial Green",
+            "value": "bg-dark-green"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ariaLabel",
+        "label": "Aria Label"
+      }
+    ]
+  },
+  {
+    "id": "quote-carousel-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "quote",
+        "value": "",
+        "label": "Quote"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "nameDescription",
+        "label": "Attribution"
+      }
+    ]
+  },
+  {
+    "id": "rich-text",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content",
+        "value": "",
+        "label": "Content"
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Narrow measure",
+            "value": "narrow"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section-title",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "description": "Use a heading element to control the heading level."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "anchorLink",
+        "label": "Anchor Link ID",
+        "description": "Id used to link to this title from an anchor."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "align",
+        "label": "Alignment",
+        "value": "title-center",
+        "options": [
+          {
+            "name": "Left",
+            "value": "title-left"
+          },
+          {
+            "name": "Centre",
+            "value": "title-center"
+          },
+          {
+            "name": "Right",
+            "value": "title-right"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link",
+        "description": "Optional — wraps the title in a link."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "bottomPadding",
+        "label": "Bottom Padding",
+        "value": "",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Small",
+            "value": "section-title-space--small-padding-bottom"
+          },
+          {
+            "name": "None",
+            "value": "section-title-space--no-padding-bottom"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "social-grid",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Heading"
+      }
+    ]
+  },
+  {
+    "id": "social-grid-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "socialFeedImage",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "socialIcon",
+        "label": "Network",
+        "value": "instagram",
+        "options": [
+          {
+            "name": "Instagram",
+            "value": "instagram"
+          },
+          {
+            "name": "Facebook",
+            "value": "facebook"
+          },
+          {
+            "name": "TikTok",
+            "value": "tiktok"
+          },
+          {
+            "name": "YouTube",
+            "value": "youtube"
+          },
+          {
+            "name": "LinkedIn",
+            "value": "linkedin"
+          },
+          {
+            "name": "WeChat",
+            "value": "weixin"
+          },
+          {
+            "name": "Text only",
+            "value": "text"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "socialHandle",
+        "label": "Handle"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "socialFeedUrl",
+        "label": "Post URL"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "message",
+        "value": "",
+        "label": "Message",
+        "description": "Shown instead of an image for text-only tiles."
+      }
+    ]
+  },
+  {
+    "id": "zone-listing",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "anchorLink",
+        "label": "Anchor Link ID"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "showAllMin",
+        "label": "Items Shown On Mobile",
+        "description": "Defaults to 6."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "viewAllLabel",
+        "label": "View All Label"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "viewLessLabel",
+        "label": "View Less Label"
+      }
+    ]
+  },
+  {
+    "id": "zone-listing-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image360x540",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image1x1",
+        "label": "Mobile Image (square)",
+        "multi": false
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "pathHTML",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "header",
+        "label": "Heading"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "descriptionDetail",
+        "value": "",
+        "label": "Description"
       }
     ]
   }

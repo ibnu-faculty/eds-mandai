@@ -1,0 +1,129 @@
+/* Ported from styles/blocks/short-masthead.less + mandai/md-short-masthead-component.less */
+
+.conservation-banner .short-masthead {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.conservation-banner .cover-picture {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 700px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.conservation-banner .cover-picture img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+
+.conservation-banner .cover-picture .mobile {
+  display: none;
+}
+
+.conservation-banner .wrapp-content {
+  position: absolute;
+  top: 15%;
+  bottom: auto;
+  left: 50%;
+  z-index: 2;
+  width: 34.375rem;
+  color: var(--tapir-white);
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.conservation-banner .wrapp-content h1,
+.conservation-banner .wrapp-content h2,
+.conservation-banner .wrapp-content h3,
+.conservation-banner .wrapp-content h4,
+.conservation-banner .wrapp-content h5 {
+  color: var(--casque-yellow);
+}
+
+.conservation-banner .wrapp-content h2 {
+  margin-bottom: 10px;
+}
+
+.conservation-banner .wrapp-content .desc,
+.conservation-banner .wrapp-content .desc p {
+  margin-bottom: 20px;
+  font-family: var(--primary-font-bold);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--sap-white);
+}
+
+.conservation-banner .wrapp-content.text-gradient::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: 53.125rem;
+  height: 53.125rem;
+  background: radial-gradient(ellipse 300px 240px, #000, transparent);
+  transform: translate(-50%, -50%);
+}
+
+.conservation-banner .wrapp-content a {
+  position: relative;
+  z-index: 3;
+  pointer-events: all;
+}
+
+.conservation-banner .wrapp-content .banner-box {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.conservation-banner .wrapp-content .banner-box img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media only screen and (width <= 1024px) {
+  .conservation-banner .cover-picture {
+    background-position: top;
+  }
+
+  .conservation-banner .cover-picture img {
+    width: 100%;
+    height: auto;
+  }
+
+  .conservation-banner .cover-picture .mobile {
+    display: inline-block;
+  }
+
+  .conservation-banner .cover-picture .desktop {
+    display: none;
+  }
+}
+
+@media only screen and (width <= 992px) {
+  .conservation-banner .wrapp-content {
+    width: 25.938rem;
+    margin: auto;
+  }
+}
+
+@media only screen and (width <= 767px) {
+  .conservation-banner .cover-picture {
+    height: 667px;
+  }
+
+  .conservation-banner .wrapp-content {
+    top: 8%;
+    width: 23.625rem;
+  }
+}

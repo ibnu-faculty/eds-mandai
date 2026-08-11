@@ -1,0 +1,361 @@
+/* Ported from styles/blocks/mandai/md-feature-carousel-experience.less */
+
+.experience-carousel {
+  padding: 120px 0;
+}
+
+.experience-carousel .md-feature-carousel__wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 0 120px;
+}
+
+.experience-carousel .md-feature-carousel__wrapper:last-child {
+  margin: 0;
+}
+
+/* --- title card ----------------------------------------------------------- */
+
+.experience-carousel .md-feature-carousel__title-block {
+  z-index: 2;
+  flex: 0 0 380px;
+  width: 380px;
+}
+
+.experience-carousel .md-feature-carousel__title-block .title-content {
+  display: block;
+  padding: 20px;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  background-color: var(--equatorial-green);
+  color: var(--sap-white);
+  font-size: 1rem;
+}
+
+.experience-carousel .md-feature-carousel__title-block a.title-content {
+  cursor: pointer;
+}
+
+.experience-carousel .md-feature-carousel__title-block .title-content:focus {
+  border: 2px solid var(--casque-yellow);
+}
+
+.experience-carousel .md-feature-carousel__title-block .title-content .header {
+  font-size: 1.625rem;
+  line-height: normal;
+  color: var(--sap-white);
+}
+
+.experience-carousel .md-feature-carousel__title-block .title-content .description,
+.experience-carousel .md-feature-carousel__title-block .title-content .description p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.experience-carousel .md-feature-carousel__title-block .title-content .description p {
+  margin-bottom: 1rem;
+}
+
+.experience-carousel .md-feature-carousel__title-block .title-content .md-link-with-arrow {
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+  font-family: var(--primary-font-bold);
+}
+
+.experience-carousel .md-feature-carousel__title-block .title-content .md-link-arrow {
+  width: 1.875rem;
+  min-width: 30px;
+  height: 1.875rem;
+  min-height: 30px;
+  background-color: var(--casque-yellow);
+  color: var(--equatorial-green);
+}
+
+.experience-carousel .md-feature-carousel__title-block .title-content ol {
+  padding-left: 20px;
+  list-style: decimal;
+}
+
+.experience-carousel .md-feature-carousel__title-block .title-content ul {
+  padding-left: 20px;
+  list-style: initial;
+}
+
+.experience-carousel .md-feature-carousel__title-block .title-content ol li,
+.experience-carousel .md-feature-carousel__title-block .title-content ul li {
+  font-size: 1rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .experience-carousel .md-feature-carousel__title-block a.title-content:hover {
+    background-color: var(--md-arrow-hover);
+    color: var(--sap-white);
+  }
+
+  .experience-carousel .md-feature-carousel__title-block a.title-content:hover .header {
+    color: var(--sap-white);
+  }
+
+  .experience-carousel .md-feature-carousel__title-block a.title-content:hover .md-link-arrow {
+    background-color: var(--md-button-bg-hover);
+  }
+}
+
+/* --- slides --------------------------------------------------------------- */
+
+/*
+ * A definite width is required: the track is sized as a percentage of the list,
+ * so a purely content-based flex basis would be circular.
+ */
+.experience-carousel .md-feature-carousel__list {
+  display: block;
+  flex: 0 1 580px;
+  width: 580px;
+  min-width: 0;
+  max-width: 580px;
+}
+
+.experience-carousel .md-feature-carousel__item {
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.experience-carousel .md-feature-carousel__container a:focus .md-feature-carousel__item,
+.experience-carousel .md-feature-carousel__item:focus {
+  border: 2px solid var(--rainforest-green);
+}
+
+.experience-carousel .md-feature-carousel__item.text-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-image: linear-gradient(180deg, rgb(0 0 0 / 0%) 0, rgb(0 0 0 / 80%) 100%);
+  pointer-events: none;
+}
+
+.experience-carousel .md-feature-carousel__img img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.experience-carousel .md-feature-carousel__content .feature-content {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  padding: 25px;
+  overflow: hidden;
+  direction: ltr;
+}
+
+.experience-carousel .md-feature-carousel__content .feature-content .feature-content-inner {
+  transform: translateY(100%);
+  transition: transform 0.4s;
+}
+
+.experience-carousel .md-feature-carousel__content .feature-content .title {
+  min-height: 25px;
+  margin-bottom: 10px;
+  font-family: var(--primary-font-bold);
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.625rem;
+  color: var(--sap-white);
+  transform: translateY(-100%);
+  transition: transform 0.4s;
+}
+
+.experience-carousel .md-feature-carousel__content .feature-content .body-text1,
+.experience-carousel .md-feature-carousel__content .feature-content .body-text1 p {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .experience-carousel .md-feature-carousel__item:hover
+    .md-feature-carousel__content .feature-content .feature-content-inner,
+  .experience-carousel .md-feature-carousel__item:hover
+    .md-feature-carousel__content .feature-content .title {
+    transform: translateY(0);
+  }
+}
+
+/* --- carousel chrome ------------------------------------------------------ */
+
+.experience-carousel .slick-slider {
+  position: relative;
+  display: block;
+  visibility: visible;
+}
+
+.experience-carousel .md-feature-carousel__list.slick-initialized {
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-carousel .slick-list {
+  position: relative;
+  display: block;
+  padding: 0;
+  padding-right: 41%;
+  overflow: visible;
+}
+
+.experience-carousel .slick-track {
+  position: relative;
+  display: flex;
+  transition-property: transform;
+  transition-timing-function: ease;
+}
+
+.experience-carousel .md-feature-carousel__list.slick-initialized .slick-slide {
+  float: none;
+  flex: 0 0 auto;
+  padding: 0 0 0 10px;
+  opacity: 0.5;
+  transform: scale(0.69);
+  transform-origin: top left;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.experience-carousel .md-feature-carousel__list.slick-initialized .slick-current {
+  padding: 0 10px 0 0;
+  transform: scale(1);
+}
+
+.experience-carousel .md-feature-carousel__list.slick-initialized .slick-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.experience-carousel .slick-dotted .slick-dots {
+  display: none;
+}
+
+.experience-carousel .slick-slider .slick-arrow {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid #707070;
+  border-radius: 20px;
+  background: none;
+  color: var(--equatorial-green);
+  cursor: pointer;
+}
+
+.experience-carousel .slick-slider .slick-arrow .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.experience-carousel .slick-slider .slick-arrow:focus,
+.experience-carousel .slick-slider .slick-arrow:hover {
+  border: 2px solid var(--rainforest-green);
+}
+
+.experience-carousel .md-feature-carousel__list.slick-initialized .slick-arrow.slick-prev {
+  inset: auto 64px 5% auto;
+}
+
+.experience-carousel .md-feature-carousel__list.slick-initialized .slick-arrow.slick-next {
+  top: auto;
+  right: 0;
+  bottom: 5%;
+}
+
+.experience-carousel .slick-slider .slick-arrow.slick-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* --- breakpoints ---------------------------------------------------------- */
+
+@media only screen and (width <= 1200px) {
+  .experience-carousel .md-feature-carousel__list.slick-initialized .slick-arrow.slick-prev,
+  .experience-carousel .md-feature-carousel__list.slick-initialized .slick-arrow.slick-next {
+    bottom: -5%;
+  }
+}
+
+@media only screen and (width <= 1024px) {
+  .experience-carousel {
+    padding: 40px 0;
+  }
+}
+
+@media only screen and (width <= 992px) {
+  .experience-carousel .md-feature-carousel__title-block .title-content .md-link-arrow {
+    width: 1.5rem;
+    min-width: 24px;
+    height: 1.5rem;
+    min-height: 24px;
+  }
+}
+
+@media only screen and (width <= 991px) {
+  .experience-carousel .md-feature-carousel__wrapper {
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 0 60px;
+  }
+
+  .experience-carousel .md-feature-carousel__title-block {
+    flex: initial;
+    width: 100%;
+    max-width: initial;
+  }
+
+  .experience-carousel .md-feature-carousel__list {
+    flex: initial;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .experience-carousel .slick-list {
+    padding-right: 15%;
+    padding-left: 0;
+  }
+
+  .experience-carousel .slick-slider .slick-arrow {
+    display: none;
+  }
+
+  .experience-carousel .md-feature-carousel__content .feature-content {
+    padding: 10px 15px;
+  }
+
+  .experience-carousel .md-feature-carousel__content .feature-content .title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    line-height: 26px;
+  }
+
+  .experience-carousel .md-feature-carousel__content .feature-content .body-text1,
+  .experience-carousel .md-feature-carousel__content .feature-content .body-text1 p {
+    font-size: 0.875rem;
+    line-height: 1.063rem;
+    color: var(--sap-white);
+  }
+}

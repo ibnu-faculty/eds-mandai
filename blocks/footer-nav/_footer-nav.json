@@ -1,0 +1,99 @@
+{
+  "definitions": [
+    {
+      "title": "Footer",
+      "id": "footer-nav",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Footer",
+              "model": "footer-nav",
+              "filter": "footer-nav"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Footer Row",
+      "id": "footer-nav-row",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Footer Row",
+              "model": "footer-nav-row"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "footer-nav",
+      "fields": []
+    },
+    {
+      "id": "footer-nav-row",
+      "fields": [
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "type",
+          "label": "Row Type",
+          "value": "links-left",
+          "options": [
+            {
+              "name": "Awards",
+              "value": "awards"
+            },
+            {
+              "name": "Social",
+              "value": "social"
+            },
+            {
+              "name": "Links (left column)",
+              "value": "links-left"
+            },
+            {
+              "name": "Links (right column)",
+              "value": "links-right"
+            },
+            {
+              "name": "Legal",
+              "value": "legal"
+            }
+          ]
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "title",
+          "value": "",
+          "label": "Title",
+          "description": "For a legal row this holds the copyright text."
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "content",
+          "value": "",
+          "label": "Content",
+          "description": "Awards: images. Social: a list of links, each optionally followed by its icon and QR images. Links/Legal: a list of links."
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "footer-nav",
+      "components": [
+        "footer-nav-row"
+      ]
+    }
+  ]
+}

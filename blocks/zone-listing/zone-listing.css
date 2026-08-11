@@ -1,0 +1,149 @@
+/* Ported from styles/blocks/animal-listing.less + list-experience.less */
+
+.zone-listing {
+  padding-bottom: 2rem;
+}
+
+.zone-listing .list-animals {
+  position: relative;
+  font-size: 0;
+  text-align: center;
+}
+
+.zone-listing .animals-item {
+  position: relative;
+  display: inline-block;
+  width: 25%;
+  overflow: hidden;
+}
+
+.zone-listing .animals-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(-180deg, rgb(0 0 0 / 0%) 61%, #000 100%);
+  pointer-events: none;
+}
+
+.zone-listing .animals-item img {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.zone-listing .wrapp-img {
+  display: block;
+  overflow: hidden;
+}
+
+.zone-listing .animals-item .desc {
+  position: absolute;
+  right: 0;
+  bottom: 1.25rem;
+  left: 0;
+  z-index: 2;
+  padding: 0 1.625rem 0 1.438rem;
+  color: var(--tapir-white);
+  text-align: left;
+}
+
+.zone-listing .animals-item .desc h4 {
+  margin-bottom: 0.313rem;
+  font-family: var(--primary-font-bold);
+  font-size: 1.295rem;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--tapir-white);
+}
+
+.zone-listing .animals-item .desc h4 .icon {
+  width: 0.5em;
+  height: 1em;
+  padding-left: 5px;
+  box-sizing: content-box;
+}
+
+.zone-listing .animals-item .desc p {
+  font-family: var(--primary-font-regular);
+  font-size: 1rem;
+  line-height: normal;
+  color: var(--tapir-white);
+}
+
+@media only screen and (width <= 992px) {
+  .zone-listing .list-animals {
+    min-height: 220px;
+  }
+}
+
+@media only screen and (width <= 991px) {
+  .zone-listing .list-animals {
+    padding: 0 0.5rem;
+  }
+
+  .zone-listing .animals-item {
+    width: 50%;
+  }
+
+  .zone-listing .animals-item .desc {
+    bottom: 1.25rem;
+    padding: 2rem 1rem 0;
+  }
+
+  .zone-listing .animals-item .desc h4 {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+
+  .zone-listing .animals-item .desc p {
+    display: none;
+  }
+}
+
+/* --- show all / show less (mobile only) ----------------------------------- */
+
+.zone-listing .animals-item.hidden-xs {
+  display: none;
+}
+
+.zone-listing .wrapp-btn {
+  padding: 1.25rem 0 0;
+  text-align: center;
+}
+
+.zone-listing .wrapp-btn .btn {
+  display: inline-block;
+  min-width: 190px;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--equatorial-green);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--equatorial-green);
+  font-family: var(--primary-font-bold);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+@media only screen and (width >= 992px) {
+  .zone-listing .hide-desktop {
+    display: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .zone-listing .wrapp-btn .btn:hover {
+    background: var(--equatorial-green);
+    color: var(--sap-white);
+  }
+}

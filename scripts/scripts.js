@@ -1,7 +1,6 @@
 import {
   loadHeader,
   loadFooter,
-  decorateIcons,
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
@@ -10,6 +9,7 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
+import { decorateIcons as inlineIcons } from './site.js';
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -71,7 +71,9 @@ function buildAutoBlocks() {
 }
 
 /**
- * Decorates formatted links to style them as buttons.
+ * Decorates formatted links to style them as Mandai buttons.
+ * A bolded standalone link becomes the yellow pill CTA (`md-button-big`) the
+ * site uses everywhere; an italic one becomes the smaller `md-button`.
  * @param {HTMLElement} main The main container element
  */
 export function decorateButtons(main) {
@@ -93,19 +95,53 @@ export function decorateButtons(main) {
     const em = a.closest('em');
     if (!strong && !em) return;
 
-    p.className = 'button-wrapper';
-    a.className = 'button';
-    if (strong && em) { // high-impact call-to-action
-      a.classList.add('accent');
-      const outer = strong.contains(em) ? strong : em;
-      outer.replaceWith(a);
-    } else if (strong) {
-      a.classList.add('primary');
+    p.classList.add('button-wrapper');
+    if (strong) {
+      a.classList.add('md-button-big');
       strong.replaceWith(a);
     } else {
-      a.classList.add('secondary');
+      a.classList.add('md-button');
       em.replaceWith(a);
     }
+  });
+}
+
+/**
+ * Adds the back-to-top control (the AEM `back-to-top.js` plugin): it becomes
+ * visible once the page has been scrolled by more than one screen height and
+ * smooth-scrolls back to the top when activated.
+ */
+function decorateBackToTop() {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'md-back-to-top';
+  button.setAttribute('aria-label', 'Back to top');
+  button.innerHTML = '<span class="icon icon-chevron-up"></span>';
+  document.body.append(button);
+  inlineIcons(button);
+
+  const threshold = window.screen.height;
+  window.addEventListener('scroll', () => {
+    button.classList.toggle('active', window.scrollY > threshold);
+  }, { passive: true });
+
+  button.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/**
+ * Applies the accessible name authored in section metadata, so a section keeps
+ * the `aria-label` / `aria-labelledby` the AEM `section` component rendered.
+ * @param {Element} main The main container element
+ */
+function decorateSectionLabels(main) {
+  main.querySelectorAll(':scope > .section').forEach((section) => {
+    const { ariaLabel, ariaLabelledby } = section.dataset;
+    if (!ariaLabel && !ariaLabelledby) return;
+    section.setAttribute('role', 'region');
+    if (ariaLabelledby) section.setAttribute('aria-labelledby', ariaLabelledby);
+    else section.setAttribute('aria-label', ariaLabel);
   });
 }
 
@@ -115,9 +151,10 @@ export function decorateButtons(main) {
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
-  decorateIcons(main);
+  inlineIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionLabels(main);
   decorateBlocks(main);
   decorateButtons(main);
 }
@@ -161,6 +198,8 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
 
   loadFooter(doc.querySelector('footer'));
+
+  decorateBackToTop();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();

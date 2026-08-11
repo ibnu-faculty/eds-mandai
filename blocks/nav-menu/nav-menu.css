@@ -1,0 +1,7 @@
+/*
+ * The navigation rows are consumed by the header block and never rendered in
+ * place, so they stay hidden if the /nav fragment is ever viewed on its own.
+ */
+.nav-menu {
+  display: none;
+}

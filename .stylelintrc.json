@@ -1,3 +1,14 @@
 {
-  "extends": ["stylelint-config-standard"]
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9_-]*$",
+      {
+        "message": "Expected class selector to be lower case (kebab-case, BEM or the ported AEM component names)"
+      }
+    ],
+    "custom-property-pattern": null,
+    "no-descending-specificity": null,
+    "declaration-block-single-line-max-declarations": null
+  }
 }

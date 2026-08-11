@@ -1,0 +1,40 @@
+/* Ported from styles/blocks/mandai/md-page-title.less + common.less (.title-block) */
+
+.section-title.section-title-space--small-padding-bottom {
+  padding-bottom: 1rem;
+}
+
+.section-title.section-title-space--no-padding-bottom {
+  padding-bottom: 0;
+}
+
+.section-title .title-block {
+  width: 100%;
+  padding-bottom: 0;
+  background-image: none;
+  font-family: var(--primary-font-bold);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--equatorial-green);
+}
+
+.section-title .title-block::after {
+  content: none;
+}
+
+.section-title .title-block a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media only screen and (width <= 991px) {
+  .section-title .title-block {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (width <= 767px) {
+  .section-title .title-block {
+    padding-bottom: 0.813rem;
+  }
+}
