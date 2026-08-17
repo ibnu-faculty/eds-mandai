@@ -1,12 +1,14 @@
 /*
- * Full-bleed like every other Re:Nue block: Mandai's sections do not constrain
- * their children (see `main > .section` in styles/styles.css), so the block
- * owns its own gutter and caps at the Re:Nue container width.
+ * Genuinely full-bleed: the block spans the section and owns only its gutter.
+ *
+ * Deliberately NO max-width + `margin: 0 auto` here. Mandai's global
+ * `main .section > div > div { margin: 0 }` (styles/styles.css) has higher
+ * specificity than a single block class, so `margin: 0 auto` never applies —
+ * a capped block ends up left-aligned with the whole gutter on the right,
+ * which reads as broken rather than centred.
  */
 .renue-accordion {
   text-align: center;
-  max-width: var(--renue-container-max);
-  margin: 0 auto;
   padding: var(--renue-space-2xl) var(--renue-space-lg);
 }
 
