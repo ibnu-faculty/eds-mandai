@@ -35,6 +35,11 @@ module.exports = {
       'section-title': 5,
       'social-grid-item': 5,
       'zone-listing-item': 5,
+      // Ported Re:Nue blocks, same reasoning: the pillar banner's eyebrow /
+      // heading / copy and the signup form's copy / consent text are each
+      // separately authored in the Re:Nue design.
+      'renue-pillar': 5,
+      'renue-signup-form': 5,
     }],
   },
 };

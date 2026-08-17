@@ -452,6 +452,174 @@
           }
         },
         {
+          "title": "Re:Nue Accordion",
+          "id": "renue-accordion",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Renue Accordion",
+                  "model": "renue-accordion",
+                  "filter": "renue-accordion"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Re:Nue Accordion Item",
+          "id": "renue-accordion-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Renue Accordion Item",
+                  "model": "renue-accordion-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Re:Nue CTA Banner",
+          "id": "renue-cta",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Renue CTA",
+                  "model": "renue-cta"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Re:Nue Footer",
+          "id": "renue-footer",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Renue Footer",
+                  "model": "renue-footer"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Re:Nue Header",
+          "id": "renue-header",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Renue Header",
+                  "model": "renue-header"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Re:Nue Hero",
+          "id": "renue-hero",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Renue Hero",
+                  "model": "renue-hero",
+                  "filter": "renue-hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Re:Nue Hero Slide",
+          "id": "renue-hero-slide",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Renue Hero Slide",
+                  "model": "renue-hero-slide"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Re:Nue Pillar Banner",
+          "id": "renue-pillar",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Renue Pillar",
+                  "model": "renue-pillar"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Re:Nue Community Signup",
+          "id": "renue-signup-form",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Renue Signup Form",
+                  "model": "renue-signup-form"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Re:Nue Stats",
+          "id": "renue-stats",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Renue Stats",
+                  "model": "renue-stats",
+                  "filter": "renue-stats"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Re:Nue Stat Item",
+          "id": "renue-stat-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Renue Stat Item",
+                  "model": "renue-stat-item"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Rich Text",
           "id": "rich-text",
           "plugins": {

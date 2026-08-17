@@ -1,0 +1,41 @@
+.renue-cta {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--renue-color-black-950);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 220px;
+}
+
+.renue-cta__source-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.renue-cta__overlay {
+  position: relative;
+  z-index: 1;
+  background: rgb(0 0 0 / 45%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--renue-space-sm);
+  padding: var(--renue-space-lg);
+}
+
+.renue-cta__heading {
+  margin: 0;
+  color: var(--renue-color-primary-white);
+  font-size: var(--renue-text-h3-size);
+  line-height: var(--renue-text-h3-line);
+  font-weight: 600;
+}

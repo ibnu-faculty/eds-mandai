@@ -1165,6 +1165,305 @@
     ]
   },
   {
+    "id": "renue-accordion",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading (e.g. \"Our values\")",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "subheading",
+        "label": "Subheading",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "renue-accordion-item",
+    "fields": [
+      {
+        "component": "select",
+        "name": "accentColor",
+        "label": "Icon accent color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Blue",
+            "value": "blue"
+          },
+          {
+            "name": "Red",
+            "value": "red"
+          },
+          {
+            "name": "Gold",
+            "value": "gold"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "body",
+        "label": "Body copy",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "name": "openByDefault",
+        "label": "Open by default",
+        "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "renue-cta",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Background image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "name": "cta",
+        "label": "Button link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "Button label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "renue-footer",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "xfPath",
+        "label": "Footer Experience Fragment",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "renue-header",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "xfPath",
+        "label": "Header Experience Fragment",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "announcement",
+        "label": "Announcement bar text (optional)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "renue-hero",
+    "fields": [
+      {
+        "component": "number",
+        "name": "autoplayInterval",
+        "label": "Autoplay interval in ms (0 = disabled)",
+        "valueType": "number"
+      }
+    ]
+  },
+  {
+    "id": "renue-hero-slide",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Background image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "eyebrow",
+        "label": "Eyebrow (small label above heading)",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Headline",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "name": "cta",
+        "label": "Button link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "Button label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "renue-pillar",
+    "fields": [
+      {
+        "component": "text",
+        "name": "eyebrow",
+        "label": "Eyebrow label (e.g. \"Re:Nue pillars:\")",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "copy",
+        "label": "Body copy",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "cta",
+        "label": "Button link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "Button label",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "renue-signup-form",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "copy",
+        "label": "Body copy",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "consent",
+        "label": "Consent / legal text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "submitLabel",
+        "label": "Submit button label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "renue-stats",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "copy",
+        "label": "Description copy",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "cta",
+        "label": "Button link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "Button label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "renue-stat-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "icon",
+        "label": "Icon (emoji or icon token, e.g. :store:)",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Label (e.g. \"Stores\")",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "number",
+        "name": "value",
+        "label": "Value to count up to",
+        "valueType": "number",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "suffix",
+        "label": "Suffix (e.g. \"+\")",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "rich-text",
     "fields": [
       {

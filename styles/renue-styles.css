@@ -1,0 +1,116 @@
+/*
+ * Re:Nue design tokens + shared button component.
+ *
+ * Loaded on demand by scripts/renue.js (loadRenueTheme), not from head.html —
+ * a Mandai page with no Re:Nue block on it never downloads this. Kept out of
+ * styles/styles.css so the two brands' globals stay separate.
+ *
+ * Every custom property is namespaced --renue-*, and every rule is scoped to a
+ * .renue-* block root, so nothing here can affect Mandai content. The global
+ * reset, body typography, and section/block-status mechanics deliberately are
+ * NOT duplicated from the original Re:Nue styles.css — Mandai's
+ * styles/styles.css already owns those.
+ */
+
+:root {
+  --renue-color-primary-white: #fff;
+  --renue-color-maroon-900: #7a2331;
+  --renue-color-navy-900: #1e2a5e;
+  --renue-color-gold-500: #f4b731;
+  --renue-color-black-950: #0d0d0d;
+  --renue-color-grey-100: #f5f5f5;
+  --renue-color-grey-600: #6b6b6b;
+  --renue-color-text-dark: #1a1a1a;
+  --renue-color-accent-blue: #2f6fed;
+  --renue-color-accent-red: #d13b3b;
+  --renue-color-accent-gold: #f4b731;
+  --renue-font-family-primary: 'Renue Poppins', poppins-fallback, -apple-system, blinkmacsystemfont, sans-serif;
+  --renue-text-h1-size: 64px;
+  --renue-text-h1-line: 76px;
+  --renue-text-h2-size: 48px;
+  --renue-text-h2-line: 62.4px;
+  --renue-text-h3-size: 32px;
+  --renue-text-h3-line: 40px;
+  --renue-text-body-size: 16px;
+  --renue-text-body-line: 26px;
+  --renue-text-small-size: 13px;
+  --renue-text-small-line: 18px;
+  --renue-space-2xs: 8px;
+  --renue-space-xs: 12px;
+  --renue-space-sm: 16px;
+  --renue-space-md: 24px;
+  --renue-space-lg: 36px;
+  --renue-space-xl: 48px;
+  --renue-space-2xl: 64px;
+  --renue-container-max: 1440px;
+  --renue-radius-sm: 8px;
+  --renue-radius-md: 16px;
+  --renue-radius-pill: 999px;
+  --renue-shadow-card: 0 8px 24px rgb(0 0 0 / 12%);
+}
+
+/* Brand typography applies only inside a Re:Nue block; descendants inherit. */
+.renue-accordion,
+.renue-accordion-item,
+.renue-cta,
+.renue-footer,
+.renue-header,
+.renue-hero,
+.renue-hero-slide,
+.renue-pillar,
+.renue-signup-form,
+.renue-stat-item,
+.renue-stats {
+  font-family: var(--renue-font-family-primary);
+  color: var(--renue-color-text-dark);
+}
+
+/*
+ * Shared button, applied explicitly by the Re:Nue blocks' JS to their authored
+ * CTA links (see e.g. blocks/renue-cta/renue-cta.js). Mirrors the Re:Nue Figma
+ * "Button" component variants (Type=Primary, Colour=White/Dark).
+ *
+ * Plain authored links inside a Re:Nue block still go through Mandai's global
+ * a.button styling from styles/styles.css — that is intentional, so a Re:Nue
+ * block dropped onto a Mandai page keeps one consistent default-link look.
+ */
+.renue-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: var(--renue-radius-pill);
+  font-family: var(--renue-font-family-primary);
+  font-size: var(--renue-text-small-size);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.renue-btn:hover,
+.renue-btn:focus-visible {
+  opacity: 0.85;
+}
+
+.renue-btn--white {
+  background: var(--renue-color-primary-white);
+  color: var(--renue-color-text-dark);
+}
+
+.renue-btn--dark {
+  background: var(--renue-color-black-950);
+  color: var(--renue-color-primary-white);
+}
+
+/* Visually-hidden label, used by the Re:Nue header toggle and signup form. */
+.renue-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

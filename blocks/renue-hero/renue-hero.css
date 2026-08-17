@@ -1,0 +1,130 @@
+/*
+ * Track/list/scroll-snap structure adapted from aem-block-collection's
+ * carousel block CSS (https://www.aem.live/developer/block-collection/carousel) —
+ * see blocks/renue-hero/hero.js for the JS side of the adaptation. Per-slide
+ * visual styling (background image, headline, eyebrow, CTA) lives in
+ * blocks/renue-hero-slide/renue-hero-slide.css.
+ */
+.renue-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.renue-hero__track {
+  position: relative;
+  width: 100%;
+
+  /* See project history: aspect-ratio + max-height together shrank the
+     width instead of the height once the ratio's natural height exceeded
+     the cap — use a directly-computed height instead. */
+  height: clamp(360px, 45vw, 640px);
+}
+
+.renue-hero__slides {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: scroll clip;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.renue-hero__slides::-webkit-scrollbar {
+  display: none;
+}
+
+.renue-hero__slide-wrapper {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  height: 100%;
+}
+
+.renue-hero__nav-buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: var(--renue-space-sm);
+  right: var(--renue-space-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.renue-hero__prev,
+.renue-hero__next {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(13 13 13 / 35%);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.renue-hero__prev:hover,
+.renue-hero__next:hover,
+.renue-hero__prev:focus-visible,
+.renue-hero__next:focus-visible {
+  background: rgb(13 13 13 / 65%);
+}
+
+.renue-hero__prev::after,
+.renue-hero__next::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--renue-color-primary-white);
+  border-bottom: 0;
+  border-left: 0;
+}
+
+.renue-hero__prev::after {
+  transform: translate(-65%, -50%) rotate(-135deg);
+}
+
+.renue-hero__next::after {
+  transform: translate(-35%, -50%) rotate(45deg);
+}
+
+.renue-hero__pagination {
+  position: absolute;
+  bottom: var(--renue-space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.renue-hero__pagination ol {
+  display: flex;
+  gap: var(--renue-space-2xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.renue-hero__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  background: rgb(255 255 255 / 50%);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s;
+}
+
+.renue-hero__dot.is-active,
+.renue-hero__dot:hover,
+.renue-hero__dot:focus-visible {
+  background: var(--renue-color-primary-white);
+}

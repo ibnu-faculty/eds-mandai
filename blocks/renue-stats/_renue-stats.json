@@ -1,0 +1,99 @@
+{
+  "definitions": [
+    {
+      "title": "Re:Nue Stats",
+      "id": "renue-stats",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Renue Stats",
+              "model": "renue-stats",
+              "filter": "renue-stats"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Re:Nue Stat Item",
+      "id": "renue-stat-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Renue Stat Item",
+              "model": "renue-stat-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "renue-stats",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "copy",
+          "label": "Description copy",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "cta",
+          "label": "Button link",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "ctaText",
+          "label": "Button label",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "renue-stat-item",
+      "fields": [
+        {
+          "component": "text",
+          "name": "icon",
+          "label": "Icon (emoji or icon token, e.g. :store:)",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "label",
+          "label": "Label (e.g. \"Stores\")",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "number",
+          "name": "value",
+          "label": "Value to count up to",
+          "valueType": "number",
+          "required": true
+        },
+        {
+          "component": "text",
+          "name": "suffix",
+          "label": "Suffix (e.g. \"+\")",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "renue-stats",
+      "components": [
+        "renue-stat-item"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<!--
+  Reference markup for the Header Experience Fragment.
+  In AEM Author, this is authored as an actual Experience Fragment (e.g. at
+  /content/experience-fragments/renue/site/header) using the same Universal
+  Editor building blocks (a "logo" text/link + a "nav" component with
+  repeatable nav-item children). This static file documents the EXACT plain
+  HTML shape that XF must render to, since blocks/renue-header/renue-header.js
+  does:
+
+      fetch(`${xfPath}.plain.html`)
+
+  and inlines the response verbatim into .renue-header__nav-bar. Keep this
+  file's structure in sync with whatever the real XF component authoring
+  emits — treat it as a contract/fixture for local dev + a QA reference.
+-->
+<a class="renue-header__logo" href="/" aria-label="Re:Nue home">re:nue<span class="renue-header__logo-mark" aria-hidden="true">&reg;</span></a>
+<button class="renue-header__menu-toggle" type="button" aria-expanded="false" aria-controls="renue-primary-nav">
+  <span></span><span></span><span></span>
+  <span class="renue-sr-only">Toggle menu</span>
+</button>
+<nav class="renue-header__nav" id="renue-primary-nav" aria-label="Primary">
+  <ul class="renue-header__nav-list">
+    <li><a href="/thrift-with-us">Thrift with us</a></li>
+    <li><a href="/donate">Donate</a></li>
+    <li><a href="/impact">Impact</a></li>
+    <li><a href="/get-involved">Get involved</a></li>
+    <li><a href="/about-us">About us</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>

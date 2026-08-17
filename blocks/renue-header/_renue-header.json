@@ -1,0 +1,44 @@
+{
+  "definitions": [
+    {
+      "title": "Re:Nue Header",
+      "id": "renue-header",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Renue Header",
+              "model": "renue-header"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "renue-header",
+      "fields": [
+        {
+          "component": "aem-content",
+          "name": "xfPath",
+          "label": "Header Experience Fragment",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "announcement",
+          "label": "Announcement bar text (optional)",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "renue-header",
+      "components": []
+    }
+  ]
+}

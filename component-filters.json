@@ -106,6 +106,44 @@
     ]
   },
   {
+    "id": "renue-accordion",
+    "components": [
+      "renue-accordion-item"
+    ]
+  },
+  {
+    "id": "renue-cta",
+    "components": []
+  },
+  {
+    "id": "renue-footer",
+    "components": []
+  },
+  {
+    "id": "renue-header",
+    "components": []
+  },
+  {
+    "id": "renue-hero",
+    "components": [
+      "renue-hero-slide"
+    ]
+  },
+  {
+    "id": "renue-pillar",
+    "components": []
+  },
+  {
+    "id": "renue-signup-form",
+    "components": []
+  },
+  {
+    "id": "renue-stats",
+    "components": [
+      "renue-stat-item"
+    ]
+  },
+  {
     "id": "social-grid",
     "components": [
       "social-grid-item"

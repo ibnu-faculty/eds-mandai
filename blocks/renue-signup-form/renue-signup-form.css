@@ -1,0 +1,87 @@
+.renue-signup-form {
+  background: var(--renue-color-gold-500);
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: var(--renue-space-xl);
+  align-items: center;
+  padding: var(--renue-space-2xl) var(--renue-space-lg);
+  max-width: var(--renue-container-max);
+  margin: 0 auto;
+}
+
+.renue-signup-form__media img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--renue-radius-md);
+  display: block;
+}
+
+.renue-signup-form__heading {
+  margin: 0 0 var(--renue-space-sm);
+  color: var(--renue-color-maroon-900);
+  font-size: var(--renue-text-h3-size);
+  line-height: var(--renue-text-h3-line);
+  font-weight: 600;
+}
+
+.renue-signup-form__copy {
+  margin: 0 0 var(--renue-space-md);
+  color: var(--renue-color-text-dark);
+}
+
+.renue-signup-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--renue-space-sm);
+}
+
+.renue-signup-form__field input,
+.renue-signup-form__form input[type='email'],
+.renue-signup-form__form input[type='text'] {
+  width: 100%;
+  border: 0;
+  border-radius: var(--renue-radius-sm);
+  padding: var(--renue-space-sm);
+  font-size: var(--renue-text-body-size);
+  font-family: inherit;
+}
+
+.renue-signup-form__signup-method {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--renue-space-md);
+  align-items: center;
+  font-size: var(--renue-text-small-size);
+  color: var(--renue-color-text-dark);
+}
+
+.renue-signup-form__signup-method legend {
+  font-weight: 600;
+  padding: 0;
+}
+
+.renue-signup-form__consent {
+  display: flex;
+  gap: var(--renue-space-2xs);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--renue-color-text-dark);
+}
+
+.renue-signup-form__consent a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.renue-signup-form__submit {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (width <= 900px) {
+  .renue-signup-form {
+    grid-template-columns: 1fr;
+  }
+}

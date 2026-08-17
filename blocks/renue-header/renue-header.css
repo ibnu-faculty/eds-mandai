@@ -1,0 +1,114 @@
+.renue-header {
+  position: relative;
+  z-index: 100;
+}
+
+.renue-header__announcement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--renue-space-sm);
+  background: var(--renue-color-black-950);
+  color: var(--renue-color-primary-white);
+  padding: var(--renue-space-2xs) var(--renue-space-md);
+  text-align: center;
+}
+
+.renue-header__announcement-text {
+  margin: 0;
+  font-size: var(--renue-text-small-size);
+  line-height: var(--renue-text-small-line);
+}
+
+.renue-header__announcement-close {
+  background: none;
+  border: 0;
+  color: inherit;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.renue-header__nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--renue-space-sm) var(--renue-space-lg);
+  background: var(--renue-color-primary-white);
+  max-width: var(--renue-container-max);
+  margin: 0 auto;
+}
+
+.renue-header__logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--renue-color-text-dark);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.renue-header__logo-mark {
+  font-size: 11px;
+  vertical-align: super;
+}
+
+.renue-header__menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: var(--renue-space-2xs);
+}
+
+.renue-header__menu-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--renue-color-text-dark);
+  display: block;
+}
+
+.renue-header__nav-list {
+  display: flex;
+  gap: var(--renue-space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.renue-header__nav-list a {
+  color: var(--renue-color-text-dark);
+  text-decoration: none;
+  font-size: var(--renue-text-small-size);
+  font-weight: 500;
+}
+
+.renue-header__nav-list a:hover,
+.renue-header__nav-list a:focus-visible {
+  color: var(--renue-color-maroon-900);
+}
+
+@media (width <= 900px) {
+  .renue-header__menu-toggle {
+    display: flex;
+  }
+
+  .renue-header__nav {
+    display: none;
+    position: absolute;
+    inset: 100% 0 auto;
+    background: var(--renue-color-primary-white);
+    box-shadow: var(--renue-shadow-card);
+  }
+
+  .renue-header__nav[data-open='true'] {
+    display: block;
+  }
+
+  .renue-header__nav-list {
+    flex-direction: column;
+    padding: var(--renue-space-md);
+  }
+}
