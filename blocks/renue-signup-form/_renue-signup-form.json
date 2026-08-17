@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Re:Nue Community Signup",
+      "title": "Renue Signup Form",
       "id": "renue-signup-form",
       "plugins": {
         "xwalk": {
@@ -54,10 +54,5 @@
       ]
     }
   ],
-  "filters": [
-    {
-      "id": "renue-signup-form",
-      "components": []
-    }
-  ]
+  "filters": []
 }

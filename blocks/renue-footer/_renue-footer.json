@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Re:Nue Footer",
+      "title": "Renue Footer",
       "id": "renue-footer",
       "plugins": {
         "xwalk": {
@@ -29,10 +29,5 @@
       ]
     }
   ],
-  "filters": [
-    {
-      "id": "renue-footer",
-      "components": []
-    }
-  ]
+  "filters": []
 }

@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Re:Nue Accordion",
+      "title": "Renue Accordion",
       "id": "renue-accordion",
       "plugins": {
         "xwalk": {
@@ -17,7 +17,7 @@
       }
     },
     {
-      "title": "Re:Nue Accordion Item",
+      "title": "Renue Accordion Item",
       "id": "renue-accordion-item",
       "plugins": {
         "xwalk": {

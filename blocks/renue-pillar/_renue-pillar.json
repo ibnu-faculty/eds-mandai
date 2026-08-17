@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Re:Nue Pillar Banner",
+      "title": "Renue Pillar",
       "id": "renue-pillar",
       "plugins": {
         "xwalk": {
@@ -60,10 +60,5 @@
       ]
     }
   ],
-  "filters": [
-    {
-      "id": "renue-pillar",
-      "components": []
-    }
-  ]
+  "filters": []
 }

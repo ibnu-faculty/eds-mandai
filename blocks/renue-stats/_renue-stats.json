@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Re:Nue Stats",
+      "title": "Renue Stats",
       "id": "renue-stats",
       "plugins": {
         "xwalk": {
@@ -17,7 +17,7 @@
       }
     },
     {
-      "title": "Re:Nue Stat Item",
+      "title": "Renue Stat Item",
       "id": "renue-stat-item",
       "plugins": {
         "xwalk": {

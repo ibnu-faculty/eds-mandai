@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Re:Nue CTA Banner",
+      "title": "Renue CTA",
       "id": "renue-cta",
       "plugins": {
         "xwalk": {
@@ -48,10 +48,5 @@
       ]
     }
   ],
-  "filters": [
-    {
-      "id": "renue-cta",
-      "components": []
-    }
-  ]
+  "filters": []
 }

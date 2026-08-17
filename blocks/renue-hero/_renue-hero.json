@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Re:Nue Hero",
+      "title": "Renue Hero",
       "id": "renue-hero",
       "plugins": {
         "xwalk": {
@@ -17,7 +17,7 @@
       }
     },
     {
-      "title": "Re:Nue Hero Slide",
+      "title": "Renue Hero Slide",
       "id": "renue-hero-slide",
       "plugins": {
         "xwalk": {

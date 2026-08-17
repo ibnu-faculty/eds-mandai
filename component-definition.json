@@ -452,7 +452,7 @@
           }
         },
         {
-          "title": "Re:Nue Accordion",
+          "title": "Renue Accordion",
           "id": "renue-accordion",
           "plugins": {
             "xwalk": {
@@ -468,7 +468,7 @@
           }
         },
         {
-          "title": "Re:Nue Accordion Item",
+          "title": "Renue Accordion Item",
           "id": "renue-accordion-item",
           "plugins": {
             "xwalk": {
@@ -483,7 +483,7 @@
           }
         },
         {
-          "title": "Re:Nue CTA Banner",
+          "title": "Renue CTA",
           "id": "renue-cta",
           "plugins": {
             "xwalk": {
@@ -498,7 +498,7 @@
           }
         },
         {
-          "title": "Re:Nue Footer",
+          "title": "Renue Footer",
           "id": "renue-footer",
           "plugins": {
             "xwalk": {
@@ -513,7 +513,7 @@
           }
         },
         {
-          "title": "Re:Nue Header",
+          "title": "Renue Header",
           "id": "renue-header",
           "plugins": {
             "xwalk": {
@@ -528,7 +528,7 @@
           }
         },
         {
-          "title": "Re:Nue Hero",
+          "title": "Renue Hero",
           "id": "renue-hero",
           "plugins": {
             "xwalk": {
@@ -544,7 +544,7 @@
           }
         },
         {
-          "title": "Re:Nue Hero Slide",
+          "title": "Renue Hero Slide",
           "id": "renue-hero-slide",
           "plugins": {
             "xwalk": {
@@ -559,7 +559,7 @@
           }
         },
         {
-          "title": "Re:Nue Pillar Banner",
+          "title": "Renue Pillar",
           "id": "renue-pillar",
           "plugins": {
             "xwalk": {
@@ -574,7 +574,7 @@
           }
         },
         {
-          "title": "Re:Nue Community Signup",
+          "title": "Renue Signup Form",
           "id": "renue-signup-form",
           "plugins": {
             "xwalk": {
@@ -589,7 +589,7 @@
           }
         },
         {
-          "title": "Re:Nue Stats",
+          "title": "Renue Stats",
           "id": "renue-stats",
           "plugins": {
             "xwalk": {
@@ -605,7 +605,7 @@
           }
         },
         {
-          "title": "Re:Nue Stat Item",
+          "title": "Renue Stat Item",
           "id": "renue-stat-item",
           "plugins": {
             "xwalk": {
