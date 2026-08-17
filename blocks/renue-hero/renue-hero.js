@@ -1,16 +1,19 @@
-import { decorateBlock, loadBlock } from '../../scripts/aem.js';
-import { loadRenueTheme } from '../../scripts/renue.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
+import { loadRenueTheme, optimizePicture } from '../../scripts/renue.js';
 
 /*
- * Re:Nue Hero (carousel) container. Field order (see _renue-hero.json
- * "renue-hero" model): autoplayInterval. Repeatable `renue-hero-slide`
- * children carry the actual per-slide content (image/eyebrow/heading/cta) —
- * see blocks/renue-hero-slide/renue-hero-slide.js. Same container/child +
- * explicit decorateBlock/loadBlock pattern as
- * blocks/renue-stats/renue-stats.js and
- * blocks/renue-accordion/renue-accordion.js — see the comment there for why
- * nested children need this instead of relying on the top-level
- * decorateBlocks() scan.
+ * Re:Nue Hero (carousel).
+ *
+ * Cell layout, as emitted by the xwalk renderer:
+ *   row 0                     the container's own `autoplayInterval` field
+ *   row 1..n, one per slide    [image, eyebrow, heading, cta] as CELLS
+ *
+ * Repeatable children use the `core/franklin/components/block/v1/block/item`
+ * resource type, which renders each item as a plain row inside this block —
+ * NOT as a nested block with its own class. So the slides are built here from
+ * their cells (same pattern as blocks/feature-carousel/feature-carousel.js),
+ * and `moveInstrumentation` carries the data-aue-* attributes across so every
+ * field stays click-to-edit in Universal Editor.
  *
  * Slide-switching mechanics (indicators, prev/next buttons, active-slide
  * tracking via IntersectionObserver, scroll-snap track) are adapted from
@@ -20,11 +23,76 @@ import { loadRenueTheme } from '../../scripts/renue.js';
  * (matching the Figma hero) rather than the collection's side-by-side
  * image/content layout.
  *
- * Only one slide is confirmed from Figma today; authoring a second
- * `renue-hero-slide` automatically turns on the carousel controls below — no
- * code change needed.
+ * Authoring a second slide automatically turns on the carousel controls
+ * below — no code change needed.
  */
+
+// number of leading rows that belong to this block rather than to a slide
+const CONTAINER_ROWS = 1;
+
 let heroInstance = 0;
+
+function cellText(cell) {
+  return cell ? cell.textContent.trim() : '';
+}
+
+/**
+ * Builds one slide from its authored row.
+ * @param {Element} row The item row
+ * @param {boolean} isFirstSlide Whether this is the first slide on the page
+ * @returns {Element} The slide element
+ */
+function buildSlide(row, isFirstSlide) {
+  const [imageCell, eyebrowCell, headingCell, ctaCell] = [...row.children];
+
+  const slide = document.createElement('div');
+  slide.className = 'renue-hero__slide';
+
+  const picture = imageCell ? imageCell.querySelector('picture') : null;
+  if (picture) {
+    // Eager + a wide breakpoint set: when this hero is the page's first
+    // section, its first slide is the LCP candidate — scripts/scripts.js
+    // awaits that section's images in loadEager().
+    optimizePicture(picture, { eager: isFirstSlide });
+    const img = picture.querySelector('img');
+    if (img && img.src) slide.style.backgroundImage = `url('${img.src}')`;
+    // Keep the original picture in the DOM (off-screen) so Universal Editor
+    // still finds an editable image reference on the page.
+    picture.classList.add('renue-hero__source-image');
+    slide.append(picture);
+  }
+
+  const body = document.createElement('div');
+  body.className = 'renue-hero__body';
+
+  if (cellText(eyebrowCell)) {
+    const eyebrow = document.createElement('p');
+    eyebrow.className = 'renue-hero__eyebrow';
+    eyebrow.textContent = cellText(eyebrowCell);
+    moveInstrumentation(eyebrowCell, eyebrow);
+    body.append(eyebrow);
+  }
+
+  if (cellText(headingCell)) {
+    // Only the first slide's heading is an <h1> (one per page); later slides
+    // use <h2> so a multi-slide hero doesn't produce several <h1>s.
+    const heading = document.createElement(isFirstSlide ? 'h1' : 'h2');
+    heading.className = 'renue-hero__headline';
+    heading.textContent = cellText(headingCell);
+    moveInstrumentation(headingCell, heading);
+    body.append(heading);
+  }
+
+  const cta = ctaCell ? ctaCell.querySelector('a[href]') : null;
+  if (cta) {
+    cta.className = 'renue-btn renue-btn--white';
+    body.append(cta);
+  }
+
+  slide.append(body);
+  moveInstrumentation(row, slide);
+  return slide;
+}
 
 export default async function decorate(block) {
   await loadRenueTheme();
@@ -32,12 +100,9 @@ export default async function decorate(block) {
   heroInstance += 1;
   const instanceId = heroInstance;
 
-  const [autoplayRow] = [...block.children].filter((el) => !el.classList.contains('renue-hero-slide'));
-  const autoplayInterval = parseInt(autoplayRow?.textContent?.trim(), 10) || 0;
-
-  const slides = [...block.querySelectorAll(':scope > .renue-hero-slide')];
-  slides.forEach(decorateBlock);
-  await Promise.all(slides.map(loadBlock));
+  const rows = [...block.children];
+  const autoplayInterval = parseInt(cellText(rows[0]), 10) || 0;
+  const slides = rows.slice(CONTAINER_ROWS).map((row, idx) => buildSlide(row, idx === 0));
 
   block.innerHTML = '';
 
@@ -60,8 +125,7 @@ export default async function decorate(block) {
   track.append(list);
   block.append(track);
 
-  const isSingleSlide = slides.length < 2;
-  if (isSingleSlide) return;
+  if (slides.length < 2) return;
 
   const navButtons = document.createElement('div');
   navButtons.className = 'renue-hero__nav-buttons';

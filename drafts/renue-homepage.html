@@ -4,22 +4,36 @@
   <meta charset="utf-8">
   <title>Re:Nue blocks — EDS fixture preview</title>
   <!--
-    Simulates the raw pre-decoration markup AEM's Universal Editor / xwalk
-    renderer emits for the ported Re:Nue blocks: each block is
-    `<div class="section"><div class="renue-BLOCKNAME"><row><cell>value</cell>
-    </row>...</div></div>`, with cells in the exact order defined in each
-    block's _renue-<name>.json model.
+    Simulates the raw pre-decoration markup AEM's xwalk renderer emits for the
+    ported Re:Nue blocks. Serve it with
+    `npx -y @adobe/aem-cli up --html-folder drafts` and open
+    http://localhost:3000/drafts/renue-homepage.
 
-    Serve it with `npx -y @adobe/aem-cli up --html-folder drafts` and open
-    http://localhost:3000/renue-homepage — it exists purely so the ported
-    block JS/CSS can be exercised end to end locally.
+    MARKUP CONTRACT — verified against real authored output on
+    main--eds-mandai--ibnu-faculty.aem.page (see the feature-carousel block
+    there). Getting this wrong is what makes a block look fine locally and
+    render empty in Universal Editor:
 
-    Two things differ from the original Re:Nue project's fixture:
-      1. `<header>`/`<footer>` hold MANDAI's site chrome (this is a Mandai
-         site). The Re:Nue header and footer are in-page blocks in main.
-      2. A block's `cta`/`ctaText` model fields are a collapsible field
-         group, so they render as ONE cell holding `<a href>Label</a>` —
-         not two cells. See blocks/renue-cta/renue-cta.js.
+      * A block's OWN fields are one ROW EACH, holding a single cell:
+            <div class="renue-cta">
+              <div><div>field 1</div></div>
+              <div><div>field 2</div></div>
+            </div>
+
+      * A repeatable CHILD (resourceType .../block/v1/block/item) is ONE ROW
+        per item, with ONE CELL PER FIELD, and carries NO class of its own.
+        Child rows come after the container's own field rows:
+            <div class="renue-hero">
+              <div><div>autoplayInterval</div></div>   <- container field
+              <div><div>img</div><div>eyebrow</div><div>heading</div><div>cta</div></div>
+              <div><div>img</div><div>eyebrow</div><div>heading</div><div>cta</div></div>
+            </div>
+
+      * A `cta` + `ctaText` model pair is a collapsible field group and renders
+        as ONE cell holding <a href>Label</a>.
+
+    Note `<header>`/`<footer>` hold MANDAI's site chrome — this is a Mandai
+    site. The Re:Nue header and footer are in-page blocks inside main.
   -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="template" content="homepage">
@@ -33,7 +47,7 @@
   <main>
     <div class="section">
       <!--
-        Re:Nue header as an in-page block. Row 1 = xfPath, row 2 = announcement.
+        Re:Nue header. Row 1 = xfPath, row 2 = announcement.
         The authored path is /drafts/xf/header because `aem up --html-folder
         drafts` mounts this folder at /drafts; in real AEM content the block's
         own default of /xf/header applies and this cell can be left empty.
@@ -46,58 +60,44 @@
 
     <div class="section">
       <!--
-        Hero is a container + repeatable `renue-hero-slide` children (see
-        blocks/renue-hero/renue-hero.js). Row 1 is the container's own
-        `autoplayInterval` field (empty = disabled). Slide 1 is the confirmed
-        Figma content; slide 2 is a FIXTURE-ONLY placeholder added purely to
-        exercise the carousel controls (indicators, prev/next) end to end — it
-        is not authored/confirmed content and should be dropped or replaced
-        once real second-slide content (if any) is confirmed.
+        Row 1 is the container's `autoplayInterval` (empty = disabled). Each
+        later row is one slide. Slide 1 is the confirmed Figma content; slide 2
+        is a FIXTURE-ONLY placeholder added purely to exercise the carousel
+        controls (indicators, prev/next) end to end.
       -->
       <div class="renue-hero">
         <div><div></div></div>
-        <div class="renue-hero-slide">
-          <div><div><picture><img src="/assets/renue/img/masthead-01.jpg" alt=""></picture></div></div>
-          <div><div>re:nue&reg;</div></div>
-          <div><div>Give. Thrift. Uplift.</div></div>
-          <div><div><a href="/donate">Donate your items</a></div></div>
+        <div>
+          <div><picture><img src="/assets/renue/img/masthead-01.jpg" alt=""></picture></div>
+          <div>re:nue&reg;</div>
+          <div>Give. Thrift. Uplift.</div>
+          <div><a href="/donate">Donate your items</a></div>
         </div>
-        <div class="renue-hero-slide">
-          <div><div><picture><img src="/assets/renue/img/pillar-store.jpg" alt=""></picture></div></div>
-          <div><div>re:nue&reg;</div></div>
-          <div><div>[FIXTURE PLACEHOLDER] Every donation, uplifted.</div></div>
-          <div><div><a href="/thrift-with-us">Find a store</a></div></div>
+        <div>
+          <div><picture><img src="/assets/renue/img/pillar-store.jpg" alt=""></picture></div>
+          <div>re:nue&reg;</div>
+          <div>[FIXTURE PLACEHOLDER] Every donation, uplifted.</div>
+          <div><a href="/thrift-with-us">Find a store</a></div>
         </div>
       </div>
     </div>
 
     <div class="section">
+      <!-- Rows 1-2 are the container's copy + cta; each later row is one stat. -->
       <div class="renue-stats">
         <div><div>As the social enterprise arm of The Salvation Army, Re:Nue aims to deliver excellent donation-in-kind service that meets underserved needs within our community.</div></div>
         <div><div><a href="/about-us">About Re:Nue</a></div></div>
-        <div class="renue-stat-item">
-          <div><div>&#127970;</div></div>
-          <div><div>Stores</div></div>
-          <div><div>4</div></div>
-          <div><div></div></div>
+        <div>
+          <div>&#127970;</div><div>Stores</div><div>4</div><div></div>
         </div>
-        <div class="renue-stat-item">
-          <div><div>&#127978;</div></div>
-          <div><div>Donation booths</div></div>
-          <div><div>15</div></div>
-          <div><div></div></div>
+        <div>
+          <div>&#127978;</div><div>Donation booths</div><div>15</div><div></div>
         </div>
-        <div class="renue-stat-item">
-          <div><div>&#128155;</div></div>
-          <div><div>Partners</div></div>
-          <div><div>9</div></div>
-          <div><div></div></div>
+        <div>
+          <div>&#128155;</div><div>Partners</div><div>9</div><div></div>
         </div>
-        <div class="renue-stat-item">
-          <div><div>&#128101;</div></div>
-          <div><div>Community</div></div>
-          <div><div>10000</div></div>
-          <div><div>+</div></div>
+        <div>
+          <div>&#128101;</div><div>Community</div><div>10000</div><div>+</div>
         </div>
       </div>
     </div>
@@ -113,38 +113,39 @@
     </div>
 
     <div class="section">
+      <!-- Rows 1-2 are heading + subheading; each later row is one value. -->
       <div class="renue-accordion">
         <div><div>Our values</div></div>
         <div><div>Guiding principles behind everything we do</div></div>
-        <div class="renue-accordion-item">
-          <div><div>blue</div></div>
-          <div><div>Purposeful</div></div>
-          <div><div>We are committed to making a positive difference to the environment, to supporting and changing lives, and to inspiring change for a brighter future.</div></div>
-          <div><div>true</div></div>
+        <div>
+          <div>blue</div>
+          <div>Purposeful</div>
+          <div>We are committed to making a positive difference to the environment, to supporting and changing lives, and to inspiring change for a brighter future.</div>
+          <div>true</div>
         </div>
-        <div class="renue-accordion-item">
-          <div><div>red</div></div>
-          <div><div>Passionate</div></div>
-          <div><div>Placeholder copy — confirm exact text from Figma.</div></div>
-          <div><div>false</div></div>
+        <div>
+          <div>red</div>
+          <div>Passionate</div>
+          <div>Placeholder copy — confirm exact text from Figma.</div>
+          <div>false</div>
         </div>
-        <div class="renue-accordion-item">
-          <div><div>gold</div></div>
-          <div><div>Caring</div></div>
-          <div><div>Placeholder copy — confirm exact text from Figma.</div></div>
-          <div><div>false</div></div>
+        <div>
+          <div>gold</div>
+          <div>Caring</div>
+          <div>Placeholder copy — confirm exact text from Figma.</div>
+          <div>false</div>
         </div>
-        <div class="renue-accordion-item">
-          <div><div>blue</div></div>
-          <div><div>Authentic</div></div>
-          <div><div>Placeholder copy — confirm exact text from Figma.</div></div>
-          <div><div>false</div></div>
+        <div>
+          <div>blue</div>
+          <div>Authentic</div>
+          <div>Placeholder copy — confirm exact text from Figma.</div>
+          <div>false</div>
         </div>
-        <div class="renue-accordion-item">
-          <div><div>red</div></div>
-          <div><div>Inclusive</div></div>
-          <div><div>Placeholder copy — confirm exact text from Figma.</div></div>
-          <div><div>false</div></div>
+        <div>
+          <div>red</div>
+          <div>Inclusive</div>
+          <div>Placeholder copy — confirm exact text from Figma.</div>
+          <div>false</div>
         </div>
       </div>
     </div>
@@ -168,7 +169,7 @@
     </div>
 
     <div class="section">
-      <!-- Re:Nue footer as an in-page block. Row 1 = xfPath (see header note). -->
+      <!-- Re:Nue footer. Row 1 = xfPath (see header note). -->
       <div class="renue-footer">
         <div><div><a href="/drafts/xf/footer">/drafts/xf/footer</a></div></div>
       </div>

@@ -27,3 +27,26 @@
     gap: var(--renue-space-md);
   }
 }
+
+.renue-stats__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 96px;
+}
+
+.renue-stats__icon {
+  font-size: 20px;
+}
+
+.renue-stats__label {
+  font-size: var(--renue-text-small-size);
+  color: var(--renue-color-grey-600);
+}
+
+.renue-stats__value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--renue-color-text-dark);
+}

@@ -14,14 +14,48 @@
 >
 > | was | now |
 > | --- | --- |
-> | `accordion`, `accordion-item` | `renue-accordion`, `renue-accordion-item` |
+> | `accordion` | `renue-accordion` |
 > | `cta` | `renue-cta` |
 > | `footer` | `renue-footer` |
 > | `header` | `renue-header` |
-> | `hero`, `hero-slide` | `renue-hero`, `renue-hero-slide` |
+> | `hero` | `renue-hero` |
 > | `pillar` | `renue-pillar` |
 > | `signup-form` | `renue-signup-form` |
-> | `stats`, `stat-item` | `renue-stats`, `renue-stat-item` |
+> | `stats` | `renue-stats` |
+>
+> **The three child blocks no longer exist as blocks.** `accordion-item`,
+> `hero-slide`, and `stat-item` had their own `blocks/` folders in the original
+> project, and the containers looked for them with
+> `querySelectorAll(':scope > .hero-slide')`. That does not work: a repeatable
+> child declared with the `core/franklin/components/block/v1/block/item`
+> resource type is rendered by xwalk as a **plain row inside the parent block,
+> with no class of its own**. The original selectors therefore matched nothing,
+> the child JS never ran, and Hero/Stats/Accordion rendered with no items.
+>
+> They now follow this repo's convention (see
+> `blocks/feature-carousel/feature-carousel.js`): the item logic lives in the
+> parent as a `buildSlide(row)` / `buildStat(row)` / `buildItem(row)` function,
+> the item CSS was merged into the parent's stylesheet, the child folders were
+> deleted, and `moveInstrumentation()` carries the `data-aue-*` attributes onto
+> the generated elements so every field stays click-to-edit. The item
+> *definitions and models* remain in the parent's `_renue-*.json` — Universal
+> Editor needs them to offer "Re:Nue Hero Slide" etc. as addable children.
+>
+> **The markup contract**, verified against real authored output:
+>
+> ```html
+> <div class="renue-hero">
+>   <div><div>autoplayInterval</div></div>                 <!-- container field: one row each -->
+>   <div><div>img</div><div>eyebrow</div><div>heading</div><div>cta</div></div>  <!-- one item -->
+>   <div><div>img</div><div>eyebrow</div><div>heading</div><div>cta</div></div>  <!-- one item -->
+> </div>
+> ```
+>
+> A block's own fields are **one row each**; a repeatable item is **one row with
+> one cell per field**. `drafts/renue-homepage.html` documents this and is the
+> fixture to test against — the original project's fixture used classed child
+> divs, which is why the blocks looked correct locally but rendered empty in
+> Universal Editor.
 >
 > CSS class names were renamed to match, so the BEM roots are now the block
 > names: `.site-header__*` → `.renue-header__*`, `.hero-masthead__*` →
