@@ -27,7 +27,15 @@
       "conservation-banner",
       "columns",
       "cards",
-      "hero"
+      "hero",
+      "renue-header",
+      "renue-hero",
+      "renue-stats",
+      "renue-pillar",
+      "renue-accordion",
+      "renue-cta",
+      "renue-signup-form",
+      "renue-footer"
     ]
   },
   {
