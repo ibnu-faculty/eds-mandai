@@ -4,7 +4,7 @@
   grid-template-columns: 0.8fr 1.2fr;
   gap: var(--renue-space-xl);
   align-items: center;
-  padding: var(--renue-space-2xl) var(--renue-space-lg);
+  padding: var(--renue-space-2xl) var(--renue-gutter);
   max-width: var(--renue-container-max);
   margin: 0 auto;
 }

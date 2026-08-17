@@ -42,7 +42,22 @@
   --renue-space-lg: 36px;
   --renue-space-xl: 48px;
   --renue-space-2xl: 64px;
-  --renue-container-max: 1440px;
+
+  /*
+   * Upper bound for capped blocks, not a target width. At 1440px it was the
+   * binding constraint on any normal desktop, so wide windows went unused;
+   * 2400px means 1440–2400px viewports now fill the window and only genuinely
+   * ultrawide displays get gutters, where an uncapped line length would hurt
+   * readability. Blocks that are full-bleed by design ignore this.
+   */
+  --renue-container-max: 2400px;
+
+  /*
+   * Horizontal gutter for blocks that own their inset. Fluid rather than a
+   * fixed 36px, so the breathing room grows with the window: 24px on a phone,
+   * ~58px at 1440, 96px from 2400 up.
+   */
+  --renue-gutter: clamp(var(--renue-space-md), 4vw, 96px);
   --renue-radius-sm: 8px;
   --renue-radius-md: 16px;
   --renue-radius-pill: 999px;

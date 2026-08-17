@@ -9,7 +9,7 @@
  */
 .renue-accordion {
   text-align: center;
-  padding: var(--renue-space-2xl) var(--renue-space-lg);
+  padding: var(--renue-space-2xl) var(--renue-gutter);
 }
 
 .renue-accordion__heading {

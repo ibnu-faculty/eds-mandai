@@ -19,7 +19,7 @@
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
   gap: var(--renue-space-xl);
-  padding: 0 var(--renue-space-lg) var(--renue-space-lg);
+  padding: 0 var(--renue-gutter) var(--renue-space-lg);
   max-width: var(--renue-container-max);
   margin: 0 auto;
 }
@@ -97,7 +97,7 @@
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid rgb(255 255 255 / 10%);
-  padding: var(--renue-space-sm) var(--renue-space-lg);
+  padding: var(--renue-space-sm) var(--renue-gutter);
   font-size: 12px;
   color: rgb(255 255 255 / 60%);
   max-width: var(--renue-container-max);

@@ -34,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--renue-space-sm) var(--renue-space-lg);
+  padding: var(--renue-space-sm) var(--renue-gutter);
   background: var(--renue-color-primary-white);
   max-width: var(--renue-container-max);
   margin: 0 auto;

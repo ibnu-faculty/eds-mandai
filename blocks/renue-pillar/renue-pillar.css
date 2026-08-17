@@ -5,7 +5,7 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: var(--renue-space-xl);
-  padding: var(--renue-space-2xl) var(--renue-space-lg);
+  padding: var(--renue-space-2xl) var(--renue-gutter);
   max-width: var(--renue-container-max);
   margin: 0 auto;
 }
