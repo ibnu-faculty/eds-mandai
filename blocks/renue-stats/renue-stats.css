@@ -1,7 +1,12 @@
+/*
+ * Full-bleed like every other Re:Nue block: Mandai's sections do not constrain
+ * their children (see `main > .section` in styles/styles.css), so the block
+ * owns its own gutter and caps at the Re:Nue container width.
+ */
 .renue-stats {
   text-align: center;
-  padding: var(--renue-space-lg) var(--renue-space-md);
-  max-width: 720px;
+  padding: var(--renue-space-2xl) var(--renue-space-lg);
+  max-width: var(--renue-container-max);
   margin: 0 auto;
 }
 
