@@ -20,6 +20,15 @@
   flex-wrap: wrap;
 }
 
+/*
+ * Tiles share the row equally so the banner reads as full width. Without this
+ * they sit at their intrinsic width in a centred clump, which looks like the
+ * block itself is narrow even when it spans the full container.
+ */
+.renue-stats__list > .renue-stats__item {
+  flex: 1 1 96px;
+}
+
 .renue-stats__copy {
   font-size: var(--renue-text-small-size);
   line-height: var(--renue-text-small-line);

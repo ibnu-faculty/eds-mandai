@@ -50,13 +50,23 @@ export default async function decorate(block) {
 
   // --- Nav bar (dynamically fetched from the Experience Fragment — see
   //     loadPlainFragment() in scripts/renue.js) ------------------------
-  const navBar = document.createElement('div');
-  navBar.className = 'renue-header__nav-bar';
-  block.append(navBar);
-
   const fragment = await loadPlainFragment(xfPath);
-  if (fragment) {
+  if (fragment && fragment.textContent.trim()) {
+    // Only create the bar once there is something to put in it — an empty
+    // .renue-header__nav-bar still paints its background and padding, which
+    // reads as unexplained blank space under the announcement.
+    const navBar = document.createElement('div');
+    navBar.className = 'renue-header__nav-bar';
+    block.append(navBar);
     navBar.append(...fragment.childNodes);
+
+    const toggle = navBar.querySelector('.renue-header__menu-toggle');
+    const nav = navBar.querySelector('.renue-header__nav');
+    toggle?.addEventListener('click', () => {
+      const isOpen = nav.getAttribute('data-open') === 'true';
+      nav.setAttribute('data-open', String(!isOpen));
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
   } else {
     // eslint-disable-next-line no-console
     console.error(
@@ -65,12 +75,4 @@ export default async function decorate(block) {
         + 'Universal Editor.',
     );
   }
-
-  const toggle = navBar.querySelector('.renue-header__menu-toggle');
-  const nav = navBar.querySelector('.renue-header__nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.getAttribute('data-open') === 'true';
-    nav.setAttribute('data-open', String(!isOpen));
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-  });
 }
