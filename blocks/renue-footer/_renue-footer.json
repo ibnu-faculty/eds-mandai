@@ -22,8 +22,9 @@
       "fields": [
         {
           "component": "aem-content",
-          "name": "xfPath",
-          "label": "Footer Experience Fragment",
+          "name": "contentPath",
+          "label": "Footer content page",
+          "description": "A page with one section per footer column. Leave empty to use the page's renue-footer metadata.",
           "valueType": "string"
         }
       ]

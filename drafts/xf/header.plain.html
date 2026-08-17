@@ -1,25 +1,16 @@
 <!--
-  Reference markup for the Header Experience Fragment.
-  In AEM Author, this is authored as an actual Experience Fragment (e.g. at
-  /content/experience-fragments/renue/site/header) using the same Universal
-  Editor building blocks (a "logo" text/link + a "nav" component with
-  repeatable nav-item children). This static file documents the EXACT plain
-  HTML shape that XF must render to, since blocks/renue-header/renue-header.js
-  does:
+  Reference content for the Re:Nue header nav.
 
-      fetch(`${xfPath}.plain.html`)
-
-  and inlines the response verbatim into .renue-header__nav-bar. Keep this
-  file's structure in sync with whatever the real XF component authoring
-  emits — treat it as a contract/fixture for local dev + a QA reference.
+  This is now ORDINARY authored content — no `renue-header__*` classes. In AEM
+  this is a normal page: a link for the logo plus a bulleted list of links.
+  blocks/renue-header/renue-header.js reads it and builds the nav structure
+  itself (logo, hamburger, nav list), the same way blocks/header/header.js does
+  for Mandai's chrome. Keep this file in sync with the real nav page so local
+  dev matches Author.
 -->
-<a class="renue-header__logo" href="/" aria-label="Re:Nue home">re:nue<span class="renue-header__logo-mark" aria-hidden="true">&reg;</span></a>
-<button class="renue-header__menu-toggle" type="button" aria-expanded="false" aria-controls="renue-primary-nav">
-  <span></span><span></span><span></span>
-  <span class="renue-sr-only">Toggle menu</span>
-</button>
-<nav class="renue-header__nav" id="renue-primary-nav" aria-label="Primary">
-  <ul class="renue-header__nav-list">
+<div>
+  <p><a href="/">re:nue&reg;</a></p>
+  <ul>
     <li><a href="/thrift-with-us">Thrift with us</a></li>
     <li><a href="/donate">Donate</a></li>
     <li><a href="/impact">Impact</a></li>
@@ -27,4 +18,4 @@
     <li><a href="/about-us">About us</a></li>
     <li><a href="/contact">Contact</a></li>
   </ul>
-</nav>
+</div>

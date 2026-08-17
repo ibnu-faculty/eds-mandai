@@ -2,77 +2,131 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadPlainFragment, loadRenueTheme } from '../../scripts/renue.js';
 
 /*
- * Re:Nue header block — content is sourced from an Experience Fragment (see
- * _renue-header.json "xfPath" field) rather than authored inline, per project
- * decision. The block itself only carries: (1) the XF path, and (2) an
- * optional announcement-bar override text.
+ * Re:Nue header block.
+ *
+ * Cell layout: row 0 = navPath, row 1 = announcement.
  *
  * NOTE: this is an in-page block, not the site chrome. The <header> element on
- * every page still belongs to Mandai's blocks/header — see docs/renue-eds.md.
+ * every page belongs to Mandai's blocks/header.
  *
- * Field order matches _renue-header.json's `models[0].fields` order: row 1 =
- * xfPath, row 2 = announcement. This is the standard Universal Editor
- * -> block-table mapping (one row per field, in model order).
+ * AUTHORING CONTRACT — the nav comes from an ordinary authored page, and this
+ * block BUILDS the markup from it. The previous version inlined the fragment
+ * verbatim and then looked for `.renue-header__menu-toggle` / `.renue-header__nav`,
+ * classes that only ever existed in a hand-written fixture: AEM authoring emits
+ * semantic HTML, never custom BEM classes, so the nav could never be authored.
+ * This follows blocks/header/header.js instead, which reads authored content and
+ * constructs its own structure.
  *
- * Fully dynamic, no hardcoded fallback markup: the nav path resolves as
- * authored `xfPath` -> page metadata `renue-nav` -> project default
- * `/xf/header`, in that order. The metadata key is brand-scoped on purpose:
- * the bare `nav` key is Mandai's, and reusing it here would make a Re:Nue
- * block silently render Mandai's navigation. If the fetch genuinely fails, the
- * nav bar is left empty and a console error is logged rather than silently
- * substituting stale hardcoded content — a broken XF reference should be
- * visibly broken, not hidden behind a copy that quietly drifts out of sync.
+ * The nav page just needs, in any order:
+ *   - a link that is NOT in a list  -> the logo (text or an image)
+ *   - a bulleted list of links      -> the nav items
+ *
+ * Path precedence: authored `navPath` -> page metadata `renue-nav`. The metadata
+ * key is brand-scoped on purpose: the bare `nav` key is Mandai's, and reusing it
+ * would make a Re:Nue block render Mandai's navigation.
  */
+
+/**
+ * Builds the nav bar from an authored fragment.
+ * @param {Element} source The loaded fragment
+ * @returns {Element} The nav bar element
+ */
+function buildNavBar(source) {
+  const navBar = document.createElement('div');
+  navBar.className = 'renue-header__nav-bar';
+
+  // Logo: the first link that is not part of a list. Its authored content is
+  // kept as-is so an image logo works as well as a wordmark.
+  const logoSource = [...source.querySelectorAll('a[href]')].find((a) => !a.closest('ul, ol'));
+  if (logoSource) {
+    const logo = document.createElement('a');
+    logo.className = 'renue-header__logo';
+    logo.href = logoSource.getAttribute('href');
+    logo.append(...logoSource.childNodes);
+    if (!logo.textContent.trim()) logo.setAttribute('aria-label', 'Re:Nue home');
+    navBar.append(logo);
+  }
+
+  const links = [...source.querySelectorAll('ul > li > a[href], ol > li > a[href]')];
+  if (!links.length) return navBar;
+
+  const toggle = document.createElement('button');
+  toggle.className = 'renue-header__menu-toggle';
+  toggle.type = 'button';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', 'renue-primary-nav');
+  toggle.innerHTML = '<span></span><span></span><span></span><span class="renue-sr-only">Toggle menu</span>';
+  navBar.append(toggle);
+
+  const nav = document.createElement('nav');
+  nav.className = 'renue-header__nav';
+  nav.id = 'renue-primary-nav';
+  nav.setAttribute('aria-label', 'Primary');
+
+  const list = document.createElement('ul');
+  list.className = 'renue-header__nav-list';
+  links.forEach((a) => {
+    const li = document.createElement('li');
+    li.append(a);
+    list.append(li);
+  });
+  nav.append(list);
+  navBar.append(nav);
+
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.getAttribute('data-open') === 'true';
+    nav.setAttribute('data-open', String(!isOpen));
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  return navBar;
+}
+
 export default async function decorate(block) {
   await loadRenueTheme();
 
   const rows = [...block.children];
-  const xfPathEl = rows[0]?.querySelector('a, div');
-  const authoredXfPath = xfPathEl?.getAttribute?.('href') || xfPathEl?.textContent?.trim();
-  const announcementOverride = rows[1]?.textContent?.trim();
-  const xfPath = authoredXfPath || getMetadata('renue-nav') || '/xf/header';
+  const pathEl = rows[0]?.querySelector('a, div');
+  const authoredPath = pathEl?.getAttribute?.('href') || pathEl?.textContent?.trim();
+  const navPath = authoredPath || getMetadata('renue-nav');
+  const announcementText = rows[1]?.textContent?.trim();
 
   block.innerHTML = '';
 
-  // --- Announcement bar -----------------------------------------------
-  const announcement = document.createElement('div');
-  announcement.className = 'renue-header__announcement';
-  announcement.innerHTML = `
-    <p class="renue-header__announcement-text"></p>
-    <button class="renue-header__announcement-close" type="button" aria-label="Dismiss announcement">&times;</button>
-  `;
-  announcement.querySelector('.renue-header__announcement-text').textContent = announcementOverride
-    || 'Both Re:Nue Store & Donation Booth are open! Visit us Monday–Saturday, 8:30am–5:30pm.';
-  announcement.querySelector('button').addEventListener('click', () => {
-    announcement.style.display = 'none';
-  });
-  block.append(announcement);
-
-  // --- Nav bar (dynamically fetched from the Experience Fragment — see
-  //     loadPlainFragment() in scripts/renue.js) ------------------------
-  const fragment = await loadPlainFragment(xfPath);
-  if (fragment && fragment.textContent.trim()) {
-    // Only create the bar once there is something to put in it — an empty
-    // .renue-header__nav-bar still paints its background and padding, which
-    // reads as unexplained blank space under the announcement.
-    const navBar = document.createElement('div');
-    navBar.className = 'renue-header__nav-bar';
-    block.append(navBar);
-    navBar.append(...fragment.childNodes);
-
-    const toggle = navBar.querySelector('.renue-header__menu-toggle');
-    const nav = navBar.querySelector('.renue-header__nav');
-    toggle?.addEventListener('click', () => {
-      const isOpen = nav.getAttribute('data-open') === 'true';
-      nav.setAttribute('data-open', String(!isOpen));
-      toggle.setAttribute('aria-expanded', String(!isOpen));
+  // Announcement bar — author-controlled. Rendering hardcoded marketing copy
+  // when the field is empty only looks like a bug to whoever left it blank.
+  if (announcementText) {
+    const announcement = document.createElement('div');
+    announcement.className = 'renue-header__announcement';
+    const text = document.createElement('p');
+    text.className = 'renue-header__announcement-text';
+    text.textContent = announcementText;
+    const close = document.createElement('button');
+    close.className = 'renue-header__announcement-close';
+    close.type = 'button';
+    close.setAttribute('aria-label', 'Dismiss announcement');
+    close.innerHTML = '&times;';
+    close.addEventListener('click', () => {
+      announcement.remove();
     });
-  } else {
+    announcement.append(text, close);
+    block.append(announcement);
+  }
+
+  if (!navPath) return;
+
+  const fragment = await loadPlainFragment(navPath);
+  if (!fragment) {
     // eslint-disable-next-line no-console
     console.error(
-      `[renue-header] could not load nav content from "${xfPath}" — check the Re:Nue Header `
-        + 'component\'s Experience Fragment field (or the page-level "renue-nav" metadata) in '
-        + 'Universal Editor.',
+      `[renue-header] could not load nav content from "${navPath}" — check the Renue Header `
+        + 'block\'s nav page field (or the page-level "renue-nav" metadata).',
     );
+    return;
   }
+
+  const navBar = buildNavBar(fragment);
+  // Only attach once there is something in it; an empty bar still paints its
+  // background and padding, which reads as unexplained blank space.
+  if (navBar.children.length) block.append(navBar);
 }
