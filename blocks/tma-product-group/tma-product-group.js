@@ -50,7 +50,7 @@ function buildPill(row, index) {
   pill.className = `tma-product-group__pill tma-product-group__pill--tint-${tint}`;
   if (href) pill.setAttribute('href', href);
 
-  pill.append(buildIconTile(iconCell, 40));
+  pill.append(buildIconTile(iconCell, 'sm'));
 
   const text = document.createElement('span');
   text.className = 'tma-product-group__pill-label';
@@ -69,7 +69,7 @@ export default async function decorate(block) {
 
   const header = document.createElement('div');
   header.className = 'tma-product-group__header';
-  header.append(buildIconTile(iconRow, 56));
+  header.append(buildIconTile(iconRow, 'md'));
 
   const titleText = cellText(titleRow);
   const subtitleText = cellText(subtitleRow);

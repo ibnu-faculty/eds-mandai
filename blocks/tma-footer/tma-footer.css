@@ -33,12 +33,14 @@
   object-fit: contain;
 }
 
+/* 40px at the Figma's 1440 */
 .tma-footer__logo img {
-  height: 32px;
+  height: clamp(28px, 2.78vw, 54px);
 }
 
+/* the tagline lockup is 99px tall in the Figma frame at 1440 */
 .tma-footer__tagline img {
-  height: 56px;
+  height: clamp(52px, 6.9vw, 120px);
 }
 
 /* Fallback when no tagline artwork was supplied. */
@@ -75,11 +77,4 @@
     text-align: left;
   }
 
-  .tma-footer__logo img {
-    height: 40px;
-  }
-
-  .tma-footer__tagline img {
-    height: 72px;
-  }
 }

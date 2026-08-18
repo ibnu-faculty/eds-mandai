@@ -19,9 +19,9 @@
 
 .tma-assistance__heading {
   margin: 0;
-  font-size: 28px;
+  font-size: var(--tma-text-h2-size);
   font-weight: 300;
-  line-height: 36px;
+  line-height: var(--tma-text-h2-line);
   color: var(--tma-color-text);
 }
 
@@ -60,9 +60,9 @@
 
 .tma-assistance__card-title {
   margin: 0;
-  font-size: var(--tma-text-lg-size);
+  font-size: var(--tma-text-h3-size);
   font-weight: 500;
-  line-height: var(--tma-text-lg-line);
+  line-height: var(--tma-text-h3-line);
 }
 
 .tma-assistance__card-title--primary {
@@ -85,18 +85,13 @@
    */
   .tma-assistance {
     display: grid;
-    grid-template-columns: minmax(280px, 413px) 1fr;
+    grid-template-columns: minmax(280px, clamp(340px, 28vw, 520px)) 1fr;
     gap: var(--tma-space-2xl);
     align-items: start;
     max-width: var(--tma-container-max);
     margin-inline: auto;
     padding-block: var(--tma-space-3xl);
     border-radius: var(--tma-radius-lg);
-  }
-
-  .tma-assistance__heading {
-    font-size: var(--tma-text-h2-size);
-    line-height: var(--tma-text-h2-line);
   }
 
   .tma-assistance__cards {
@@ -108,8 +103,4 @@
     gap: var(--tma-space-lg);
   }
 
-  .tma-assistance__card-title {
-    font-size: var(--tma-text-h3-size);
-    line-height: var(--tma-text-h3-line);
-  }
 }

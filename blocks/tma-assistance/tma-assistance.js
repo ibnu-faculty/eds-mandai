@@ -42,7 +42,7 @@ function buildCard(row, index) {
 
   const head = document.createElement('div');
   head.className = 'tma-assistance__card-head';
-  head.append(buildIconTile(iconCell, 56));
+  head.append(buildIconTile(iconCell, 'md'));
 
   if (title) {
     const h3 = document.createElement('h3');

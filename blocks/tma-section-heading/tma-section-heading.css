@@ -7,9 +7,9 @@
 
 .tma-section-heading__text {
   margin: 0;
-  font-size: 28px;
+  font-size: var(--tma-text-h2-size);
   font-weight: 300;
-  line-height: 36px;
+  line-height: var(--tma-text-h2-line);
   color: var(--tma-color-text);
   text-align: left;
   text-wrap: balance;
@@ -20,21 +20,12 @@
   color: var(--tma-color-teal-500);
 }
 
-@media (width >= 600px) {
-  .tma-section-heading__text {
-    font-size: 32px;
-    line-height: 42px;
-  }
-}
-
 @media (width >= 900px) {
   .tma-section-heading {
     padding: var(--tma-space-3xl) var(--tma-gutter) var(--tma-space-2xl);
   }
 
   .tma-section-heading__text {
-    font-size: var(--tma-text-h2-size);
-    line-height: var(--tma-text-h2-line);
     text-align: center;
   }
 }

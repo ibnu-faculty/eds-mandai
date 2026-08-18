@@ -32,7 +32,9 @@
 .tma-header__brand img {
   display: block;
   width: auto;
-  height: 40px;
+
+  /* 56px at the Figma's 1440, tracking the viewport either side of it */
+  height: clamp(36px, 3.89vw, 74px);
   object-fit: contain;
 }
 
@@ -45,7 +47,7 @@
   display: inline-flex;
   gap: var(--tma-space-2xs);
   align-items: center;
-  min-height: 48px;
+  min-height: clamp(48px, 3.33vw, 64px);
   padding: var(--tma-space-xs) var(--tma-space-md) var(--tma-space-xs) var(--tma-space-xs);
   font-family: inherit;
   font-size: var(--tma-text-label-size);
@@ -62,8 +64,8 @@
 .tma-header__flag {
   display: block;
   flex: 0 0 auto;
-  width: 24px;
-  height: 24px;
+  width: clamp(20px, 1.67vw, 32px);
+  height: clamp(20px, 1.67vw, 32px);
   overflow: hidden;
   border-radius: 50%;
 }
@@ -87,8 +89,8 @@
 
 .tma-header__chevron {
   flex: 0 0 auto;
-  width: 16px;
-  height: 16px;
+  width: clamp(14px, 1.11vw, 22px);
+  height: clamp(14px, 1.11vw, 22px);
   background: currentcolor;
   transition: transform 0.2s ease;
   mask: url('/icons/chevron-down.svg') center / contain no-repeat;
@@ -103,7 +105,7 @@
   top: calc(100% + var(--tma-space-2xs));
   right: 0;
   z-index: 3;
-  min-width: 200px;
+  min-width: clamp(200px, 14vw, 260px);
   margin: 0;
   padding: var(--tma-space-2xs);
   list-style: none;
@@ -146,11 +148,6 @@
 @media (width >= 600px) {
   .tma-header__inner {
     padding-block: var(--tma-space-md);
-  }
-
-  .tma-header__brand picture,
-  .tma-header__brand img {
-    height: 56px;
   }
 
   .tma-header__country-name--long {

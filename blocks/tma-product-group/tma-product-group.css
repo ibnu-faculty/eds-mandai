@@ -61,7 +61,7 @@
   display: inline-flex;
   gap: var(--tma-space-3xs);
   align-items: center;
-  min-height: 48px;
+  min-height: clamp(48px, 3.33vw, 64px);
   padding: var(--tma-space-3xs) var(--tma-space-md) var(--tma-space-3xs) var(--tma-space-2xs);
   border-radius: var(--tma-radius-pill);
   text-decoration: none;

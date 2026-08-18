@@ -38,30 +38,48 @@
   --tma-color-icon-bg: #e6f5f6;
   --tma-font-family-primary: 'TMA Sans', poppins-fallback, -apple-system, blinkmacsystemfont, sans-serif;
 
-  /* type scale — size/line pairs straight off the Figma text styles */
-  --tma-text-display-size: 48px;
-  --tma-text-display-line: 60px;
-  --tma-text-h2-size: 40px;
-  --tma-text-h2-line: 50px;
-  --tma-text-h3-size: 24px;
-  --tma-text-h3-line: 30px;
-  --tma-text-lg-size: 20px;
-  --tma-text-lg-line: 25px;
-  --tma-text-body-size: 16px;
-  --tma-text-body-line: 24px;
-  --tma-text-label-size: 16px;
-  --tma-text-label-line: 20px;
-  --tma-text-small-size: 12px;
-  --tma-text-small-line: 18px;
-  --tma-space-3xs: 4px;
-  --tma-space-2xs: 8px;
-  --tma-space-xs: 12px;
-  --tma-space-sm: 16px;
-  --tma-space-md: 20px;
-  --tma-space-lg: 24px;
-  --tma-space-xl: 32px;
-  --tma-space-2xl: 40px;
-  --tma-space-3xl: 64px;
+  /*
+   * FLUID TYPE SCALE.
+   *
+   * Every size interpolates linearly between a 600px viewport (the clamp floor)
+   * and 1920px (the ceiling), so text grows with the window instead of stepping
+   * at breakpoints. Each curve is tuned so its value at 1440px lands on the
+   * Figma text style — h2 resolves to exactly 40px at 1440 and 48px at 1920 —
+   * which is why the blocks no longer carry per-breakpoint font-size overrides.
+   *
+   * The `-line` tokens are UNITLESS RATIOS, not pixel heights: a ratio tracks
+   * whatever the fluid size resolves to, whereas a fixed px line-height would
+   * crowd the text as it grew on wide screens.
+   */
+  --tma-text-display-size: clamp(32px, 21.09px + 1.818vw, 56px);
+  --tma-text-display-line: 1.25;
+  --tma-text-h2-size: clamp(26px, 16px + 1.667vw, 48px);
+  --tma-text-h2-line: 1.25;
+  --tma-text-h3-size: clamp(20px, 16.36px + 0.606vw, 28px);
+  --tma-text-h3-line: 1.25;
+  --tma-text-lg-size: clamp(17px, 14.27px + 0.455vw, 23px);
+  --tma-text-lg-line: 1.25;
+  --tma-text-body-size: clamp(15px, 13.64px + 0.227vw, 18px);
+  --tma-text-body-line: 1.5;
+  --tma-text-label-size: clamp(14px, 12.18px + 0.303vw, 18px);
+  --tma-text-label-line: 1.25;
+  --tma-text-small-size: clamp(11px, 9.64px + 0.227vw, 14px);
+  --tma-text-small-line: 1.5;
+
+  /*
+   * Spacing rides the same 600 -> 1920 curve, so padding and gaps grow together
+   * with the type rather than leaving the layout cramped on a 27-inch display.
+   * Values at 1440px stay within a couple of px of the Figma frame's spacing.
+   */
+  --tma-space-3xs: clamp(4px, 3.09px + 0.152vw, 6px);
+  --tma-space-2xs: clamp(6px, 4.18px + 0.303vw, 10px);
+  --tma-space-xs: clamp(10px, 8.18px + 0.303vw, 14px);
+  --tma-space-sm: clamp(12px, 8.36px + 0.606vw, 20px);
+  --tma-space-md: clamp(16px, 11.45px + 0.758vw, 26px);
+  --tma-space-lg: clamp(18px, 12.55px + 0.909vw, 30px);
+  --tma-space-xl: clamp(24px, 15.82px + 1.364vw, 42px);
+  --tma-space-2xl: clamp(28px, 17.09px + 1.818vw, 52px);
+  --tma-space-3xl: clamp(40px, 18.18px + 3.636vw, 88px);
   --tma-radius-sm: 8px;
   --tma-radius-md: 16px;
   --tma-radius-lg: 32px;
@@ -69,12 +87,20 @@
   --tma-shadow-card: 0 4px 16px rgb(0 0 0 / 6%);
 
   /*
-   * The Figma frame is 1440 wide with 40px side padding. --tma-container-max
-   * caps the content column; --tma-gutter is fluid so the breathing room grows
-   * with the window instead of pinning to 40px on every screen.
+   * The Figma frame is 1440 wide with 40px side padding, i.e. a 1360px content
+   * column. --tma-container-max is the OUTER width (the gutter sits inside it),
+   * so it tracks the frame at 1440 and the gutter subtracts to exactly 1360.
+   *
+   * A flat cap meant every screen wider than 1440 only grew its margins, leaving
+   * the design marooned in the middle of the window — which is the width problem
+   * on a 1920 display. The cap is now fluid: Figma's width at 1440, tracking the
+   * viewport above it, stopping at 1840 so line lengths stay readable on
+   * ultrawide screens rather than running to 2560px.
    */
-  --tma-container-max: 1360px;
-  --tma-gutter: clamp(var(--tma-space-md), 4vw, var(--tma-space-2xl));
+  --tma-container-max: clamp(1440px, 96vw, 1840px);
+
+  /* 20px on a phone, exactly the Figma 40px at 1440, ~53px at 1920. */
+  --tma-gutter: clamp(20px, 2.78vw, 64px);
 }
 
 /*
@@ -91,6 +117,31 @@
   box-sizing: border-box;
   font-family: var(--tma-font-family-primary);
   color: var(--tma-color-text);
+}
+
+/*
+ * Headings need the family set DIRECTLY, not inherited.
+ *
+ * Mandai's styles.css carries `h1..h6 { font-family: var(--primary-font-regular) }`
+ * — Value Serif. A directly-matched rule always beats an inherited value however
+ * specific the ancestor's selector is, so the block root above could never win,
+ * and every TMA heading rendered in Mandai's serif instead of the brand sans.
+ * The same rule set also injects `h3 { padding-bottom: 10px }`, which pushed the
+ * product-group and assistance-card titles off their intended spacing.
+ *
+ * :is() takes the specificity of its most specific argument, so this resolves to
+ * (0,1,1) and outranks the bare `h1`/`h3` element selectors without !important.
+ */
+:is(
+  .tma-assistance,
+  .tma-footer,
+  .tma-header,
+  .tma-hero,
+  .tma-product-group,
+  .tma-section-heading
+) :is(h1, h2, h3, h4, h5, h6) {
+  padding: 0;
+  font-family: var(--tma-font-family-primary);
 }
 
 .tma-assistance *,
@@ -112,7 +163,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--tma-space-2xs);
-  min-height: 48px;
+  min-height: clamp(48px, 3.33vw, 64px);
   padding: 9px var(--tma-space-lg);
   border: 1px solid transparent;
   border-radius: var(--tma-radius-pill);
@@ -141,7 +192,13 @@
   opacity: 0.88;
 }
 
-/* Rounded icon tile used by the product groups and assistance cards. */
+/*
+ * Rounded icon tile used by the product groups and assistance cards.
+ *
+ * Sized here rather than inline from JS (see buildIconTile) so the tiles ride the
+ * same fluid curve as the type beside them: 40px and 56px at the Figma's 1440,
+ * growing to ~53px and ~75px at 1920.
+ */
 .tma-icon-tile {
   display: flex;
   flex: 0 0 auto;
@@ -149,6 +206,16 @@
   justify-content: center;
   background: var(--tma-color-icon-bg);
   border-radius: var(--tma-radius-md);
+}
+
+.tma-icon-tile--sm {
+  width: clamp(34px, 2.78vw, 54px);
+  height: clamp(34px, 2.78vw, 54px);
+}
+
+.tma-icon-tile--md {
+  width: clamp(44px, 3.89vw, 75px);
+  height: clamp(44px, 3.89vw, 75px);
 }
 
 .tma-icon-tile img,
@@ -195,34 +262,57 @@ main .section > div > .tma-section-heading {
  * places two product groups side by side under ONE shared heading — an
  * arrangement no single block can own without swallowing its siblings.
  *
- * Scoped to the .tma-product-columns class, so a section that has not opted in
- * is untouched. The heading spans the full row; the groups share what is left.
+ * THE GRID MUST SIT ON THE SECTION, NOT ON `.section > div`.
+ * aem.js decorateSections() gives EVERY block its own wrapper div, so a section
+ * holding a heading and two groups renders as three sibling wrappers. An earlier
+ * version put the grid on `> div`, which made each wrapper its own 2-column grid
+ * containing a single block — so every block landed in column 1 and the groups
+ * stacked, left-clustered, instead of sitting side by side.
+ *
+ * The wrappers are therefore the grid items, and the heading's wrapper is found
+ * with :has() rather than by its generated `-wrapper` class name, so this does
+ * not depend on aem.js's naming staying put.
+ *
+ * `main > .section.tma-product-columns` is specificity (0,2,1), which outranks
+ * Mandai's `main > .section { max-width: none; margin: 0; padding: 0 }` at
+ * (0,1,1) — that rule would otherwise strip the container width back off.
  */
-main .section.tma-product-columns > div {
+main > .section.tma-product-columns {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--tma-space-md);
   align-items: start;
+  width: 100%;
   max-width: var(--tma-container-max);
   margin-inline: auto;
+  padding-inline: var(--tma-gutter);
 }
 
-main .section.tma-product-columns > div > .tma-section-heading {
+/* The section now owns the container and gutters, so its blocks must not
+   re-apply their own or the content would be inset twice. */
+main > .section.tma-product-columns > div > .tma-product-group,
+main > .section.tma-product-columns > div > .tma-section-heading {
+  max-width: none;
+  padding-inline: 0;
+}
+
+main > .section.tma-product-columns > div:has(> .tma-section-heading) {
   grid-column: 1 / -1;
 }
 
 @media (width >= 900px) {
-  main .section.tma-product-columns > div {
+  main > .section.tma-product-columns {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--tma-space-2xl);
   }
 
   /*
-   * The two columns are separate blocks, so their pill rows wrap independently
-   * and the shorter column would otherwise leave its group header floating.
-   * Stretching puts both headers on the same line.
+   * The two groups are separate blocks whose pill rows wrap independently, so
+   * without this the shorter column's header would float against a taller
+   * neighbour. Stretching keeps both group headers on one line.
    */
-  main .section.tma-product-columns > div > .tma-product-group {
+  main > .section.tma-product-columns > div,
+  main > .section.tma-product-columns > div > .tma-product-group {
     height: 100%;
   }
 }

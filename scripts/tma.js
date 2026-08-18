@@ -119,15 +119,18 @@ export function buildButton(cell, variant = 'primary') {
  * Accepts whatever the author supplied — an uploaded image, or an inline SVG
  * dropped in via the icon syntax — and falls back to an empty tinted tile so a
  * missing icon degrades to a neutral shape rather than a broken image.
+ *
+ * The size comes from a modifier CLASS, not an inline width/height. Inline
+ * styles win over any stylesheet, so a px size set here would pin the tile while
+ * the fluid type and spacing around it kept scaling — the tiles would visibly
+ * shrink relative to their own labels on a wide screen.
  * @param {Element} cell The cell holding the icon
- * @param {number} size The tile's edge length in px
+ * @param {string} size 'sm' (the 40px pill tile) or 'md' (the 56px header tile)
  * @returns {Element} The tile element
  */
-export function buildIconTile(cell, size) {
+export function buildIconTile(cell, size = 'md') {
   const tile = document.createElement('span');
-  tile.className = 'tma-icon-tile';
-  tile.style.width = `${size}px`;
-  tile.style.height = `${size}px`;
+  tile.className = `tma-icon-tile tma-icon-tile--${size}`;
 
   const media = cell?.querySelector('picture, img, svg, .icon');
   if (media) {
