@@ -1,0 +1,116 @@
+{
+  "definitions": [
+    {
+      "title": "TMA Assistance",
+      "id": "tma-assistance",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "TMA Assistance",
+              "model": "tma-assistance",
+              "filter": "tma-assistance"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "TMA Assistance Card",
+      "id": "tma-assistance-card",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "TMA Assistance Card",
+              "model": "tma-assistance-card"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "tma-assistance",
+      "fields": [
+        {
+          "component": "text",
+          "name": "heading",
+          "label": "Heading",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "text",
+          "name": "description",
+          "label": "Description",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "tma-assistance-card",
+      "fields": [
+        {
+          "component": "reference",
+          "name": "icon",
+          "label": "Card icon",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "iconAlt",
+          "label": "Card icon alt text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Card title",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "aem-content",
+          "name": "cta",
+          "label": "Button link",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "ctaText",
+          "label": "Button label",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "variant",
+          "label": "Colour",
+          "description": "Leave empty to alternate deep teal and light teal",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Deep teal",
+              "value": "primary"
+            },
+            {
+              "name": "Light teal",
+              "value": "secondary"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "tma-assistance",
+      "components": [
+        "tma-assistance-card"
+      ]
+    }
+  ]
+}

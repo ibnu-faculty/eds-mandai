@@ -1,0 +1,46 @@
+/*
+ * Tokio Marine Asia webfonts.
+ *
+ * The TMA Figma file specifies NewJune (Light/Regular/Medium/Semibold), a
+ * licensed typeface whose files are not in this repo. Until they are, the
+ * `TMA Sans` family below republishes the Poppins files this project already
+ * ships (see styles/fonts.css) at the four weights the design uses, so the
+ * blocks render at the correct weights and metrics-adjacent shapes today.
+ *
+ * TO SWAP IN THE REAL FACE: drop NewJune-Light/Regular/Medium/Semibold.woff2
+ * into fonts/ and repoint the four `src` lines below. Nothing else changes —
+ * every TMA block reads --tma-font-family-primary, never a file name.
+ */
+@font-face {
+  font-family: 'TMA Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/Poppins-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'TMA Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/Poppins-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'TMA Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/Poppins-Medium.woff2') format('woff2');
+}
+
+/* The design uses 600 for buttons; Poppins-Bold is the closest shipped
+   weight, so 600 and 700 both resolve to it. */
+@font-face {
+  font-family: 'TMA Sans';
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url('../fonts/Poppins-Bold.woff2') format('woff2');
+}

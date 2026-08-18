@@ -145,6 +145,10 @@
           {
             "name": "Equatorial Green",
             "value": "bg-dark-green"
+          },
+          {
+            "name": "TMA product columns",
+            "value": "tma-product-columns"
           }
         ]
       },
@@ -1635,6 +1639,355 @@
         "value": "",
         "label": "Message",
         "description": "Shown instead of an image for text-only tiles."
+      }
+    ]
+  },
+  {
+    "id": "tma-assistance",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tma-assistance-card",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "icon",
+        "label": "Card icon",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "iconAlt",
+        "label": "Card icon alt text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Card title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "name": "cta",
+        "label": "Button link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "Button label",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "variant",
+        "label": "Colour",
+        "description": "Leave empty to alternate deep teal and light teal",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Deep teal",
+            "value": "primary"
+          },
+          {
+            "name": "Light teal",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tma-footer",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "logo",
+        "label": "Group logo",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "logoAlt",
+        "label": "Group logo alt text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "tagline",
+        "label": "Tagline artwork",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "taglineAlt",
+        "label": "Tagline artwork alt text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "taglineText",
+        "label": "Tagline text",
+        "description": "Used as the artwork's accessible text, and shown as styled text when no artwork is supplied",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "copyright",
+        "label": "Copyright",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tma-header",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "logo",
+        "label": "Logo",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "logoAlt",
+        "label": "Logo alt text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "homeLink",
+        "label": "Logo links to",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tma-header-country",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "flag",
+        "label": "Flag",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "flagAlt",
+        "label": "Flag alt text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "name",
+        "label": "Country name",
+        "valueType": "string",
+        "required": true,
+        "description": "List the current country first — it is the one shown on the toggle"
+      },
+      {
+        "component": "text",
+        "name": "shortName",
+        "label": "Short name",
+        "description": "Shown in place of the full name on small screens, e.g. SG",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Country site",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tma-hero",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Background image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Background image alt text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "headingAccent",
+        "label": "Heading accent",
+        "description": "Second half of the heading, shown in teal",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tma-hero-button",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "cta",
+        "label": "Button link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "Button label",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "variant",
+        "label": "Colour",
+        "description": "Leave empty to alternate deep teal and light teal",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Deep teal",
+            "value": "primary"
+          },
+          {
+            "name": "Light teal",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tma-product-group",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "icon",
+        "label": "Group icon",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "iconAlt",
+        "label": "Group icon alt text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Entity name",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "subtitle",
+        "label": "Insurance type",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tma-product-pill",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "icon",
+        "label": "Product icon",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "iconAlt",
+        "label": "Product icon alt text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Product name",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Product link",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "tint",
+        "label": "Colour",
+        "description": "Leave empty to cycle through the four brand tints",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Blue",
+            "value": "1"
+          },
+          {
+            "name": "Pink",
+            "value": "2"
+          },
+          {
+            "name": "Green",
+            "value": "3"
+          },
+          {
+            "name": "Orange",
+            "value": "4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tma-section-heading",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "headingAccent",
+        "label": "Heading accent",
+        "description": "Trailing part of the heading, shown in teal",
+        "valueType": "string"
       }
     ]
   },

@@ -681,6 +681,160 @@
           }
         },
         {
+          "title": "TMA Assistance",
+          "id": "tma-assistance",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "TMA Assistance",
+                  "model": "tma-assistance",
+                  "filter": "tma-assistance"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "TMA Assistance Card",
+          "id": "tma-assistance-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "TMA Assistance Card",
+                  "model": "tma-assistance-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "TMA Footer",
+          "id": "tma-footer",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "TMA Footer",
+                  "model": "tma-footer"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "TMA Header",
+          "id": "tma-header",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "TMA Header",
+                  "model": "tma-header",
+                  "filter": "tma-header"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "TMA Country",
+          "id": "tma-header-country",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "TMA Country",
+                  "model": "tma-header-country"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "TMA Hero",
+          "id": "tma-hero",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "TMA Hero",
+                  "model": "tma-hero",
+                  "filter": "tma-hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "TMA Hero Button",
+          "id": "tma-hero-button",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "TMA Hero Button",
+                  "model": "tma-hero-button"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "TMA Product Group",
+          "id": "tma-product-group",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "TMA Product Group",
+                  "model": "tma-product-group",
+                  "filter": "tma-product-group"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "TMA Product Pill",
+          "id": "tma-product-pill",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "TMA Product Pill",
+                  "model": "tma-product-pill"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "TMA Section Heading",
+          "id": "tma-section-heading",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "TMA Section Heading",
+                  "model": "tma-section-heading"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Zone Listing",
           "id": "zone-listing",
           "plugins": {

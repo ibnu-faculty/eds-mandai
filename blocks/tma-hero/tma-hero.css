@@ -1,0 +1,149 @@
+/*
+ * TMA hero.
+ *
+ * Two genuinely different layouts, not one scaled layout: the Figma mobile
+ * frame stacks copy above the image on white, the desktop frame centres the
+ * copy over a full-bleed image. The DOM is authored once in mobile order
+ * (media first, content second — see tma-hero.js) and the desktop rule below
+ * lifts the content onto the image with a grid overlay, so neither breakpoint
+ * needs a duplicated node or a JS branch.
+ */
+.tma-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--tma-color-white);
+}
+
+.tma-hero__media {
+  order: 2;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tma-hero__media picture,
+.tma-hero__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tma-hero__content {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--tma-space-sm);
+  padding: var(--tma-space-xl) var(--tma-gutter);
+}
+
+.tma-hero__heading {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 40px;
+  color: var(--tma-color-text);
+  text-wrap: balance;
+}
+
+.tma-hero__heading-accent {
+  font-weight: 500;
+  color: var(--tma-color-teal-500);
+}
+
+.tma-hero__description {
+  margin: 0;
+  font-size: var(--tma-text-body-size);
+  font-weight: 400;
+  line-height: var(--tma-text-body-line);
+  color: var(--tma-color-text-muted);
+}
+
+.tma-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tma-space-xs);
+  width: 100%;
+}
+
+.tma-hero__actions .tma-btn {
+  flex: 1 1 auto;
+  min-width: 150px;
+}
+
+@media (width >= 600px) {
+  .tma-hero__heading {
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  .tma-hero__actions .tma-btn {
+    flex: 0 0 auto;
+    min-width: 200px;
+  }
+}
+
+@media (width >= 900px) {
+  /*
+   * Single-cell grid rather than absolute positioning: both children occupy the
+   * same track, so the image sets the section's height and the copy centres
+   * against whatever that height turns out to be — no magic offsets to keep in
+   * sync with the image's aspect ratio.
+   */
+  .tma-hero {
+    display: grid;
+    grid-template-areas: 'stack';
+    align-items: center;
+  }
+
+  .tma-hero__media,
+  .tma-hero__content {
+    grid-area: stack;
+  }
+
+  .tma-hero__media {
+    height: clamp(520px, 47vw, 680px);
+  }
+
+  .tma-hero__content {
+    z-index: 1;
+    align-items: center;
+    gap: var(--tma-space-2xs);
+    width: 100%;
+    max-width: var(--tma-container-max);
+    margin-inline: auto;
+    padding-block: 0;
+    text-align: center;
+
+    /*
+     * The Figma copy block sits above centre, in the sky above the roofline of
+     * the background photo. Nudging up by a share of the hero height keeps that
+     * relationship as the image scales, instead of pinning it to one viewport.
+     */
+    transform: translateY(-8%);
+  }
+
+  .tma-hero__heading {
+    font-size: var(--tma-text-display-size);
+    line-height: var(--tma-text-display-line);
+  }
+
+  .tma-hero__description {
+    max-width: 560px;
+    margin-bottom: var(--tma-space-md);
+  }
+
+  .tma-hero__actions {
+    justify-content: center;
+    gap: var(--tma-space-xl);
+    width: auto;
+  }
+}
+
+@media (width >= 1200px) {
+  .tma-hero__heading {
+    max-width: 1040px;
+  }
+}

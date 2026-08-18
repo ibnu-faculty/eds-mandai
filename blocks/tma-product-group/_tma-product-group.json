@@ -1,0 +1,116 @@
+{
+  "definitions": [
+    {
+      "title": "TMA Product Group",
+      "id": "tma-product-group",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "TMA Product Group",
+              "model": "tma-product-group",
+              "filter": "tma-product-group"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "TMA Product Pill",
+      "id": "tma-product-pill",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "TMA Product Pill",
+              "model": "tma-product-pill"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "tma-product-group",
+      "fields": [
+        {
+          "component": "reference",
+          "name": "icon",
+          "label": "Group icon",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "iconAlt",
+          "label": "Group icon alt text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Entity name",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "text",
+          "name": "subtitle",
+          "label": "Insurance type",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "tma-product-pill",
+      "fields": [
+        {
+          "component": "reference",
+          "name": "icon",
+          "label": "Product icon",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "iconAlt",
+          "label": "Product icon alt text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "label",
+          "label": "Product name",
+          "valueType": "string",
+          "required": true
+        },
+        {
+          "component": "aem-content",
+          "name": "link",
+          "label": "Product link",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "tint",
+          "label": "Colour",
+          "description": "Leave empty to cycle through the four brand tints",
+          "valueType": "string",
+          "options": [
+            { "name": "Blue", "value": "1" },
+            { "name": "Pink", "value": "2" },
+            { "name": "Green", "value": "3" },
+            { "name": "Orange", "value": "4" }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "tma-product-group",
+      "components": ["tma-product-pill"]
+    }
+  ]
+}

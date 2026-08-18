@@ -1,0 +1,115 @@
+/*
+ * TMA "Need assistance?" section — soft teal panel holding an intro column and
+ * a row of contact cards.
+ */
+.tma-assistance {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tma-space-lg);
+  width: 100%;
+  padding: var(--tma-space-xl) var(--tma-gutter);
+  background: linear-gradient(180deg, var(--tma-color-panel-from) 0%, var(--tma-color-panel-to) 100%);
+}
+
+.tma-assistance__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tma-space-xs);
+}
+
+.tma-assistance__heading {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 36px;
+  color: var(--tma-color-text);
+}
+
+.tma-assistance__description {
+  margin: 0;
+  font-size: var(--tma-text-body-size);
+  font-weight: 400;
+  line-height: var(--tma-text-body-line);
+  color: var(--tma-color-text-muted);
+}
+
+.tma-assistance__cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tma-space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tma-assistance__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tma-space-sm);
+  padding: var(--tma-space-md);
+  background: var(--tma-color-white);
+  border-radius: var(--tma-radius-md);
+  box-shadow: var(--tma-shadow-card);
+}
+
+.tma-assistance__card-head {
+  display: flex;
+  gap: var(--tma-space-sm);
+  align-items: center;
+}
+
+.tma-assistance__card-title {
+  margin: 0;
+  font-size: var(--tma-text-lg-size);
+  font-weight: 500;
+  line-height: var(--tma-text-lg-line);
+}
+
+.tma-assistance__card-title--primary {
+  color: var(--tma-color-teal-700);
+}
+
+.tma-assistance__card-title--secondary {
+  color: var(--tma-color-teal-400);
+}
+
+.tma-assistance__card .tma-btn {
+  width: 100%;
+}
+
+@media (width >= 900px) {
+  /*
+   * Intro left, cards right, on one baseline — the Figma desktop split. The
+   * intro column is bounded and the card row takes the rest, so adding a third
+   * card narrows the cards rather than pushing the intro off-grid.
+   */
+  .tma-assistance {
+    display: grid;
+    grid-template-columns: minmax(280px, 413px) 1fr;
+    gap: var(--tma-space-2xl);
+    align-items: start;
+    max-width: var(--tma-container-max);
+    margin-inline: auto;
+    padding-block: var(--tma-space-3xl);
+    border-radius: var(--tma-radius-lg);
+  }
+
+  .tma-assistance__heading {
+    font-size: var(--tma-text-h2-size);
+    line-height: var(--tma-text-h2-line);
+  }
+
+  .tma-assistance__cards {
+    flex-direction: row;
+  }
+
+  .tma-assistance__card {
+    flex: 1 1 0;
+    gap: var(--tma-space-lg);
+  }
+
+  .tma-assistance__card-title {
+    font-size: var(--tma-text-h3-size);
+    line-height: var(--tma-text-h3-line);
+  }
+}

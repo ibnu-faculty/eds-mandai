@@ -1,0 +1,228 @@
+/*
+ * Tokio Marine Asia design tokens + shared components.
+ *
+ * Loaded on demand by scripts/tma.js (loadTmaTheme), not from head.html — a
+ * Mandai or Re:Nue page with no TMA block on it never downloads this. Kept out
+ * of styles/styles.css so all three brands' globals stay separate.
+ *
+ * Every custom property is namespaced --tma-*, and every rule is scoped to a
+ * .tma-* root, so nothing here can reach Mandai or Re:Nue content. The global
+ * reset and body typography are deliberately NOT duplicated — Mandai's
+ * styles/styles.css already owns those.
+ *
+ * Values are taken from the "Landing Page" frame of the TMA VD Figma file
+ * (node 23189:3553), read via the Figma REST API rather than eyeballed.
+ */
+
+:root {
+  /* brand palette */
+  --tma-color-teal-700: #00546c;
+  --tma-color-teal-500: #0096a9;
+  --tma-color-teal-400: #33abba;
+  --tma-color-navy-900: #032b39;
+  --tma-color-navy-950: #01212c;
+  --tma-color-white: #fff;
+  --tma-color-text: #1a1a1a;
+  --tma-color-text-muted: #484848;
+  --tma-color-text-subtle: #5f5f5f;
+
+  /* the four pill tints the design cycles through, in cycle order */
+  --tma-color-tint-1: #ebf0ff;
+  --tma-color-tint-2: #fceef3;
+  --tma-color-tint-3: #ecf7ee;
+  --tma-color-tint-4: #fdf1eb;
+
+  /* soft panel behind the "Need assistance?" section */
+  --tma-color-panel-from: #e5eef0;
+  --tma-color-panel-to: #e6f5f6;
+  --tma-color-icon-bg: #e6f5f6;
+  --tma-font-family-primary: 'TMA Sans', poppins-fallback, -apple-system, blinkmacsystemfont, sans-serif;
+
+  /* type scale — size/line pairs straight off the Figma text styles */
+  --tma-text-display-size: 48px;
+  --tma-text-display-line: 60px;
+  --tma-text-h2-size: 40px;
+  --tma-text-h2-line: 50px;
+  --tma-text-h3-size: 24px;
+  --tma-text-h3-line: 30px;
+  --tma-text-lg-size: 20px;
+  --tma-text-lg-line: 25px;
+  --tma-text-body-size: 16px;
+  --tma-text-body-line: 24px;
+  --tma-text-label-size: 16px;
+  --tma-text-label-line: 20px;
+  --tma-text-small-size: 12px;
+  --tma-text-small-line: 18px;
+  --tma-space-3xs: 4px;
+  --tma-space-2xs: 8px;
+  --tma-space-xs: 12px;
+  --tma-space-sm: 16px;
+  --tma-space-md: 20px;
+  --tma-space-lg: 24px;
+  --tma-space-xl: 32px;
+  --tma-space-2xl: 40px;
+  --tma-space-3xl: 64px;
+  --tma-radius-sm: 8px;
+  --tma-radius-md: 16px;
+  --tma-radius-lg: 32px;
+  --tma-radius-pill: 999px;
+  --tma-shadow-card: 0 4px 16px rgb(0 0 0 / 6%);
+
+  /*
+   * The Figma frame is 1440 wide with 40px side padding. --tma-container-max
+   * caps the content column; --tma-gutter is fluid so the breathing room grows
+   * with the window instead of pinning to 40px on every screen.
+   */
+  --tma-container-max: 1360px;
+  --tma-gutter: clamp(var(--tma-space-md), 4vw, var(--tma-space-2xl));
+}
+
+/*
+ * Brand typography applies only inside a TMA block; descendants inherit.
+ * Listed explicitly rather than via [class^="tma-"] so the cost stays at one
+ * cheap selector and a stray class elsewhere can never opt itself in.
+ */
+.tma-assistance,
+.tma-footer,
+.tma-header,
+.tma-hero,
+.tma-product-group,
+.tma-section-heading {
+  box-sizing: border-box;
+  font-family: var(--tma-font-family-primary);
+  color: var(--tma-color-text);
+}
+
+.tma-assistance *,
+.tma-footer *,
+.tma-header *,
+.tma-hero *,
+.tma-product-group *,
+.tma-section-heading * {
+  box-sizing: border-box;
+}
+
+/*
+ * Shared button, applied by the TMA blocks' JS to their authored CTA links
+ * (see e.g. blocks/tma-hero/tma-hero.js). Mirrors the Figma "Button" component:
+ * 48px tall, fully rounded, 16/600 label, white text on teal.
+ */
+.tma-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tma-space-2xs);
+  min-height: 48px;
+  padding: 9px var(--tma-space-lg);
+  border: 1px solid transparent;
+  border-radius: var(--tma-radius-pill);
+  font-family: var(--tma-font-family-primary);
+  font-size: var(--tma-text-label-size);
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.tma-btn--primary {
+  background: var(--tma-color-teal-700);
+  color: var(--tma-color-white);
+}
+
+.tma-btn--secondary {
+  background: var(--tma-color-teal-400);
+  color: var(--tma-color-white);
+}
+
+.tma-btn:hover,
+.tma-btn:focus-visible {
+  opacity: 0.88;
+}
+
+/* Rounded icon tile used by the product groups and assistance cards. */
+.tma-icon-tile {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  background: var(--tma-color-icon-bg);
+  border-radius: var(--tma-radius-md);
+}
+
+.tma-icon-tile img,
+.tma-icon-tile svg {
+  display: block;
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+/* Width-capped, gutter-aware content column shared by the TMA sections. */
+.tma-container {
+  width: 100%;
+  max-width: var(--tma-container-max);
+  margin-inline: auto;
+  padding-inline: var(--tma-gutter);
+}
+
+/*
+ * Mandai's `main .section > div > div { margin: 0 }` in styles/styles.css has
+ * specificity (0,0,1,3) and beats a plain `.tma-x { margin: 0 auto }` (0,0,1,0),
+ * which would left-align a capped block and dump the whole gutter on the right.
+ * This selector is (0,0,2,3), so it wins without touching Mandai's rule.
+ */
+main .section > div > .tma-assistance,
+main .section > div > .tma-product-group,
+main .section > div > .tma-section-heading {
+  margin-inline: auto;
+}
+
+/* Visually-hidden label, used by the TMA header's country toggle. */
+.tma-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/*
+ * Two-column product layout, opted into per section via Section Metadata
+ * ("TMA product columns"). It lives at section level because the Figma design
+ * places two product groups side by side under ONE shared heading — an
+ * arrangement no single block can own without swallowing its siblings.
+ *
+ * Scoped to the .tma-product-columns class, so a section that has not opted in
+ * is untouched. The heading spans the full row; the groups share what is left.
+ */
+main .section.tma-product-columns > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--tma-space-md);
+  align-items: start;
+  max-width: var(--tma-container-max);
+  margin-inline: auto;
+}
+
+main .section.tma-product-columns > div > .tma-section-heading {
+  grid-column: 1 / -1;
+}
+
+@media (width >= 900px) {
+  main .section.tma-product-columns > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--tma-space-2xl);
+  }
+
+  /*
+   * The two columns are separate blocks, so their pill rows wrap independently
+   * and the shorter column would otherwise leave its group header floating.
+   * Stretching puts both headers on the same line.
+   */
+  main .section.tma-product-columns > div > .tma-product-group {
+    height: 100%;
+  }
+}

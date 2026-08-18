@@ -42,6 +42,10 @@
             {
               "name": "Equatorial Green",
               "value": "bg-dark-green"
+            },
+            {
+              "name": "TMA product columns",
+              "value": "tma-product-columns"
             }
           ]
         },
@@ -85,7 +89,13 @@
         "renue-accordion",
         "renue-cta",
         "renue-signup-form",
-        "renue-footer"
+        "renue-footer",
+        "tma-header",
+        "tma-hero",
+        "tma-section-heading",
+        "tma-product-group",
+        "tma-assistance",
+        "tma-footer"
       ]
     }
   ]

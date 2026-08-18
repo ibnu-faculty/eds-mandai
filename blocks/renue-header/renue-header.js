@@ -86,8 +86,13 @@ export default async function decorate(block) {
   await loadRenueTheme();
 
   const rows = [...block.children];
-  const pathEl = rows[0]?.querySelector('a, div');
-  const authoredPath = pathEl?.getAttribute?.('href') || pathEl?.textContent?.trim();
+  // Read the href, not the text. AEM rewrites the authored content path into
+  // the delivery path on the anchor (/content/eds-mandai/renue-nav -> /renue-nav)
+  // while the cell's TEXT keeps the /content/... form, which 404s on delivery.
+  // A bare 'a, div' selector returns the cell div first in document order, so it
+  // never saw the anchor at all.
+  const link = rows[0]?.querySelector('a[href]');
+  const authoredPath = link ? link.getAttribute('href') : rows[0]?.textContent?.trim();
   const navPath = authoredPath || getMetadata('renue-nav');
   const announcementText = rows[1]?.textContent?.trim();
 

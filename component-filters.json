@@ -35,7 +35,13 @@
       "renue-accordion",
       "renue-cta",
       "renue-signup-form",
-      "renue-footer"
+      "renue-footer",
+      "tma-header",
+      "tma-hero",
+      "tma-section-heading",
+      "tma-product-group",
+      "tma-assistance",
+      "tma-footer"
     ]
   },
   {
@@ -135,6 +141,30 @@
     "id": "social-grid",
     "components": [
       "social-grid-item"
+    ]
+  },
+  {
+    "id": "tma-assistance",
+    "components": [
+      "tma-assistance-card"
+    ]
+  },
+  {
+    "id": "tma-header",
+    "components": [
+      "tma-header-country"
+    ]
+  },
+  {
+    "id": "tma-hero",
+    "components": [
+      "tma-hero-button"
+    ]
+  },
+  {
+    "id": "tma-product-group",
+    "components": [
+      "tma-product-pill"
     ]
   },
   {

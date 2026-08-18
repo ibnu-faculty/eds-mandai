@@ -1,0 +1,85 @@
+/*
+ * TMA site footer.
+ *
+ * The Figma frame rounds only the TOP two corners, so the panel reads as
+ * rising out of the page rather than as a detached card.
+ */
+.tma-footer {
+  width: 100%;
+  overflow: hidden;
+  background: var(--tma-color-navy-900);
+  border-radius: var(--tma-radius-lg) var(--tma-radius-lg) 0 0;
+}
+
+.tma-footer__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tma-space-lg);
+  align-items: center;
+  width: 100%;
+  max-width: var(--tma-container-max);
+  margin-inline: auto;
+  padding: var(--tma-space-xl) var(--tma-gutter);
+  text-align: center;
+}
+
+.tma-footer__logo picture,
+.tma-footer__logo img,
+.tma-footer__tagline picture,
+.tma-footer__tagline img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.tma-footer__logo img {
+  height: 32px;
+}
+
+.tma-footer__tagline img {
+  height: 56px;
+}
+
+/* Fallback when no tagline artwork was supplied. */
+.tma-footer__tagline--text {
+  margin: 0;
+  font-size: var(--tma-text-lg-size);
+  font-style: italic;
+  font-weight: 600;
+  line-height: var(--tma-text-lg-line);
+  color: var(--tma-color-white);
+}
+
+.tma-footer__bar {
+  width: 100%;
+  background: var(--tma-color-navy-950);
+}
+
+.tma-footer__copyright {
+  max-width: var(--tma-container-max);
+  margin-inline: auto;
+  padding: var(--tma-space-lg) var(--tma-gutter);
+  font-size: var(--tma-text-small-size);
+  font-weight: 500;
+  line-height: var(--tma-text-small-line);
+  color: var(--tma-color-white);
+}
+
+@media (width >= 900px) {
+  .tma-footer__main {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--tma-space-3xl);
+    text-align: left;
+  }
+
+  .tma-footer__logo img {
+    height: 40px;
+  }
+
+  .tma-footer__tagline img {
+    height: 72px;
+  }
+}

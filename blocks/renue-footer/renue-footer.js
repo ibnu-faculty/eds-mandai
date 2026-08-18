@@ -65,8 +65,9 @@ export default async function decorate(block) {
   await loadRenueTheme();
 
   const rows = [...block.children];
-  const pathEl = rows[0]?.querySelector('a, div');
-  const authoredPath = pathEl?.getAttribute?.('href') || pathEl?.textContent?.trim();
+  // Read the href, not the text — see the note in blocks/renue-header/renue-header.js.
+  const link = rows[0]?.querySelector('a[href]');
+  const authoredPath = link ? link.getAttribute('href') : rows[0]?.textContent?.trim();
   const contentPath = authoredPath || getMetadata('renue-footer');
 
   block.innerHTML = '';

@@ -1,0 +1,128 @@
+/*
+ * TMA product group.
+ *
+ * The Figma desktop frame places two of these side by side under one section
+ * heading. That side-by-side arrangement is the SECTION's job, not this block's
+ * — a group knows only how to lay itself out in the width it is given, so a
+ * page can run one, two, or three of them without this file changing.
+ */
+.tma-product-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tma-space-md);
+  width: 100%;
+  max-width: var(--tma-container-max);
+  padding: var(--tma-space-md) var(--tma-gutter);
+}
+
+.tma-product-group__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tma-space-sm);
+  align-items: flex-start;
+}
+
+.tma-product-group__titles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tma-space-3xs);
+}
+
+.tma-product-group__title {
+  margin: 0;
+  font-size: var(--tma-text-lg-size);
+  font-weight: 500;
+  line-height: var(--tma-text-lg-line);
+  color: var(--tma-color-text);
+}
+
+.tma-product-group__subtitle {
+  margin: 0;
+  font-size: var(--tma-text-label-size);
+  font-weight: 400;
+  line-height: var(--tma-text-label-line);
+  color: var(--tma-color-text-subtle);
+}
+
+.tma-product-group__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tma-space-2xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tma-product-group__pill-item {
+  display: flex;
+}
+
+.tma-product-group__pill {
+  display: inline-flex;
+  gap: var(--tma-space-3xs);
+  align-items: center;
+  min-height: 48px;
+  padding: var(--tma-space-3xs) var(--tma-space-md) var(--tma-space-3xs) var(--tma-space-2xs);
+  border-radius: var(--tma-radius-pill);
+  text-decoration: none;
+  transition: filter 0.15s ease;
+}
+
+/* Only the linked variant is interactive; a pill with no href is a plain label. */
+a.tma-product-group__pill:hover,
+a.tma-product-group__pill:focus-visible {
+  filter: brightness(0.96);
+}
+
+.tma-product-group__pill-label {
+  font-size: var(--tma-text-label-size);
+  font-weight: 500;
+  line-height: var(--tma-text-label-line);
+  color: var(--tma-color-text-muted);
+}
+
+/*
+ * The pill's icon tile carries the tint itself, so it reads as a solid chip on
+ * the tinted pill rather than a second, competing background.
+ */
+.tma-product-group__pill .tma-icon-tile {
+  background: var(--tma-color-white);
+  border-radius: var(--tma-radius-pill);
+}
+
+.tma-product-group__pill--tint-1 {
+  background: var(--tma-color-tint-1);
+}
+
+.tma-product-group__pill--tint-2 {
+  background: var(--tma-color-tint-2);
+}
+
+.tma-product-group__pill--tint-3 {
+  background: var(--tma-color-tint-3);
+}
+
+.tma-product-group__pill--tint-4 {
+  background: var(--tma-color-tint-4);
+}
+
+@media (width >= 900px) {
+  .tma-product-group {
+    gap: var(--tma-space-xl);
+    padding-block: var(--tma-space-md);
+  }
+
+  .tma-product-group__header {
+    align-items: center;
+  }
+
+  .tma-product-group__titles {
+    align-items: center;
+    text-align: center;
+  }
+
+  .tma-product-group__pills {
+    gap: var(--tma-space-md);
+    justify-content: center;
+  }
+}

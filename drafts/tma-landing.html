@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tokio Marine Asia landing page — EDS fixture preview</title>
+  <!--
+    Simulates the raw pre-decoration markup AEM's xwalk renderer emits for the
+    TMA blocks. Serve it with
+    `npx -y @adobe/aem-cli up --html-folder drafts` and open
+    http://localhost:3000/drafts/tma-landing.
+
+    Built from the "Landing Page" (desktop, 1440x1873) and "Landing Page
+    Mobile" (360x1860) frames of the Tokio Marine Asia VD Figma file, read via
+    the Figma REST API — colours, spacing and type sizes are the file's own
+    values rather than estimates.
+
+    MARKUP CONTRACT — same as drafts/renue-homepage.html, which documents it in
+    full. In short:
+      * A block's OWN fields are one ROW EACH holding a single cell.
+      * A repeatable CHILD is ONE ROW per item with ONE CELL PER FIELD and no
+        class of its own; child rows follow the container's own field rows.
+      * An `image` + `imageAlt` model pair renders as ONE cell holding a
+        <picture>; a `cta` + `ctaText` pair as ONE cell holding <a href>Label</a>.
+
+    ASSETS — hero photo and footer tagline artwork are the real ones, pulled
+    from the file's image fills. The two LOGOS are placeholders: the Figma file
+    stores them as flat black vector paths, so the shapes are right but the
+    brand colours are not recoverable from the file. Replace
+    assets/tma/img/logo-*-placeholder.svg with the official logo assets before
+    this goes anywhere near a real page.
+
+    ICONS — three product icons (motor, home, travel) were exported from the
+    file into icons/tma/. The rest hit Figma's per-file image-render rate limit;
+    pills without an icon fall back to an empty tinted tile, which is why some
+    below are bare. See the export snippet in the handover notes to finish them.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="module" src="/scripts/aem.js"></script>
+  <script type="module" src="/scripts/scripts.js"></script>
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+  <header></header>
+
+  <main>
+    <div class="section">
+      <!--
+        TMA header. Rows: logo (+alt), homeLink, then one row per country.
+        Country cells: flag, name, shortName, link. First row is the current country.
+      -->
+      <div class="tma-header">
+        <div><div><picture><img src="/assets/tma/img/logo-header-placeholder.svg" alt="Tokio Marine Insurance Group"></picture></div></div>
+        <div><div><a href="/">/</a></div></div>
+        <div>
+          <div></div>
+          <div>Singapore</div>
+          <div>SG</div>
+          <div><a href="/sg">/sg</a></div>
+        </div>
+        <div>
+          <div></div>
+          <div>Malaysia</div>
+          <div>MY</div>
+          <div><a href="/my">/my</a></div>
+        </div>
+        <div>
+          <div></div>
+          <div>Thailand</div>
+          <div>TH</div>
+          <div><a href="/th">/th</a></div>
+        </div>
+      </div>
+
+      <!--
+        TMA hero. Rows: image, heading, headingAccent, description, then one
+        row per button. Button cells: cta, variant.
+      -->
+      <div class="tma-hero">
+        <div><div><picture><img src="/assets/tma/img/hero-family-home.jpg" alt="A family outside their home, with a car and a park beyond"></picture></div></div>
+        <div><div>Tokio Marine protect what</div></div>
+        <div><div>matters most</div></div>
+        <div><div>Start by choosing your insurance type below and get instant coverage, quick claims, and peace of mind in minutes:</div></div>
+        <div>
+          <div><a href="/general-insurance">General Insurance</a></div>
+          <div>primary</div>
+        </div>
+        <div>
+          <div><a href="/life-insurance">Life Insurance</a></div>
+          <div>secondary</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section tma-product-columns">
+      <!-- TMA section heading. Rows: heading, headingAccent. -->
+      <div class="tma-section-heading">
+        <div><div>Explore comprehensive protection</div></div>
+        <div><div>for every need</div></div>
+      </div>
+
+      <!--
+        TMA product group. Rows: icon, title, subtitle, then one row per pill.
+        Pill cells: icon, label, link, tint.
+      -->
+      <div class="tma-product-group">
+        <div><div></div></div>
+        <div><div>Tokio Marine Insurance Singapore</div></div>
+        <div><div>General Insurance</div></div>
+        <div>
+          <div><picture><img src="/icons/tma/motor.svg" alt=""></picture></div>
+          <div>Motor Protection</div>
+          <div><a href="/sg/motor">/sg/motor</a></div>
+          <div>1</div>
+        </div>
+        <div>
+          <div><picture><img src="/icons/tma/home.svg" alt=""></picture></div>
+          <div>Home Protection</div>
+          <div><a href="/sg/home">/sg/home</a></div>
+          <div>2</div>
+        </div>
+        <div>
+          <div><picture><img src="/icons/tma/travel.svg" alt=""></picture></div>
+          <div>Travel Protection</div>
+          <div><a href="/sg/travel">/sg/travel</a></div>
+          <div>3</div>
+        </div>
+        <div>
+          <div></div>
+          <div>Personal Accident</div>
+          <div><a href="/sg/personal-accident">/sg/personal-accident</a></div>
+          <div>4</div>
+        </div>
+        <div>
+          <div></div>
+          <div>Business Protection</div>
+          <div><a href="/sg/business">/sg/business</a></div>
+          <div>1</div>
+        </div>
+      </div>
+
+      <div class="tma-product-group">
+        <div><div></div></div>
+        <div><div>Tokio Marine Life Insurance Singapore</div></div>
+        <div><div>Life Insurance</div></div>
+        <div>
+          <div></div>
+          <div>Critical Illness</div>
+          <div><a href="/sg/critical-illness">/sg/critical-illness</a></div>
+          <div>2</div>
+        </div>
+        <div>
+          <div></div>
+          <div>Disability Protection</div>
+          <div><a href="/sg/disability">/sg/disability</a></div>
+          <div>1</div>
+        </div>
+        <div>
+          <div></div>
+          <div>Life Insurance</div>
+          <div><a href="/sg/life">/sg/life</a></div>
+          <div>3</div>
+        </div>
+        <div>
+          <div></div>
+          <div>Retirement</div>
+          <div><a href="/sg/retirement">/sg/retirement</a></div>
+          <div>2</div>
+        </div>
+        <div>
+          <div></div>
+          <div>Education Protection</div>
+          <div><a href="/sg/education">/sg/education</a></div>
+          <div>4</div>
+        </div>
+        <div>
+          <div></div>
+          <div>Savings Protection</div>
+          <div><a href="/sg/savings">/sg/savings</a></div>
+          <div>1</div>
+        </div>
+        <div>
+          <div></div>
+          <div>Investments Protection</div>
+          <div><a href="/sg/investments">/sg/investments</a></div>
+          <div>3</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <!--
+        TMA assistance. Rows: heading, description, then one row per card.
+        Card cells: icon, title, cta, variant.
+      -->
+      <div class="tma-assistance">
+        <div><div>Need assistance?</div></div>
+        <div><div>Please contact the respective service type if you require help from us regarding any matter.</div></div>
+        <div>
+          <div></div>
+          <div>General Insurance Products</div>
+          <div><a href="/sg/contact-general">Get In Touch</a></div>
+          <div>primary</div>
+        </div>
+        <div>
+          <div></div>
+          <div>Life Insurance Products</div>
+          <div><a href="/sg/contact-life">Get In Touch</a></div>
+          <div>secondary</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <!--
+        TMA footer. Rows: logo, tagline artwork, taglineText, copyright.
+      -->
+      <div class="tma-footer">
+        <div><div><picture><img src="/assets/tma/img/logo-footer-placeholder.svg" alt="Tokio Marine Group"></picture></div></div>
+        <div><div><picture><img src="/assets/tma/img/footer-tagline.png" alt=""></picture></div></div>
+        <div><div>Inspiring Confidence. Accelerating Progress.</div></div>
+        <div><div>© 2025 All Rights Reserved</div></div>
+      </div>
+    </div>
+  </main>
+
+  <footer></footer>
+</body>
+</html>
